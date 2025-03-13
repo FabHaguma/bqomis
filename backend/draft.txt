@@ -1,0 +1,58 @@
+
+-------------------------------------
+-------------------------------------
+-------------------------------------
+
+iyo umu client aje kuri site:
+- login/register
+- home page (iriho: last appoint, info update, find nearby branches, find available services)
+-1- picks service (shows nearby branches queue status :: [shows 3/4 branches with long vertical box with 8hours low-medium-high traffic])
+-2- picks branch (shows services queue status :: [shows 3/4 services with long vertical box with 8hours low-medium-high traffic])
+-3- creates appointment: choose a branch -> pick a service -> appointment callendar [shows table with 10min box indicating low-medium-high traffic]
+- clicks on a box then confirms.
+
+
+
+# SELECT appointments WHERE district is KIGALI [FOR -1- SERVICE IS KNOWN]
+-- list the branches (ask usere to pick location)
+-- loop for each branch to list appointments incrementing each hour's variable (in an array maybe)  
+-- send json of 3/4 branches with their 8 variables to be color codded due to count (maybe a formula would help)
+
+# SELECT appointments WHERE branch_id is id [FOR -2- BRANCH IS KNOWN]
+-- list the services 
+-- loop for each service to list appointments incrementing each hour's variable 
+-- send json of 3/4 services with their 8 variables to be color codded due to count
+
+# SELECT appointments WHERE branch_id AND service_id [FOR -3- BOTH KNOWN]
+-- make 10 minutes matrix callendar as variable
+-- loop through appointments updating the matrix callendar boxes
+
+
+Test all the new routes
+
+next{
+    put it in App.js
+    make location components (east west north south kigali --> branches)
+    put arrows on services
+    make new landing page for admin
+    
+
+}
+
+
+
+
+
+TRY POSTGRESS AND NEON FREE TIER THAT'S GOOD
+https://neon.tech/pricing
+
+
+
+Bugesera	Gicumbi	Kayonza	Ngoma	Nyamasheke	Ruhango
+Burera	Gisagara	Kicukiro	Ngororero	Nyanza	Rulindo
+Gakenke	Huye	Kirehe	Nyabihu	Nyarugenge	Rusizi
+Gasabo	Kamonyi	Muhanga	Nyagatare	Nyaruguru	Rutsiro
+Gatsibo	Karongi	Musanze	Nyamagabe	Rubavu	Rwamagana
+
+
+
