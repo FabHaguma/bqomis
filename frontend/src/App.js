@@ -5,6 +5,8 @@ import HeaderNav from './components/HeaderNav';
 import FooterComp from './components/FooterComp';
 import ServiceList from './components/ServiceList';
 import BranchList from './components/BranchList';
+import TimeSlotBranch from './components/TimeSlotBranch';
+import TimeSlotService from './components/TimeSlotService';
 
 function App() {
 
@@ -19,6 +21,13 @@ function App() {
         <section class="service-location">
           <ServiceList/>
           <BranchList/>
+        </section>
+        <section class="appointments">
+          <h2>Appointments View</h2>
+          <div class="branch-matrix">
+            <TimeSlotBranch />
+            <TimeSlotService />
+          </div>
         </section>
         
         <FooterComp/>

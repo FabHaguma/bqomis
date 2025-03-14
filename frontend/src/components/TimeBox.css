@@ -1,0 +1,29 @@
+.time-box {
+    width: 50px;
+    height: 50px;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+}
+
+/* Light color for small queues */
+.time-box.light {
+    background-color: #b2fab4; /* Light green */
+}
+
+/* Medium color for moderate queues */
+.time-box.mid {
+    background-color: #81c784; /* Medium green */
+}
+
+/* Dark color for large queues */
+.time-box.high {
+    background-color: #388e3c; /* Dark green */
+}

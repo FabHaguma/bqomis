@@ -1,0 +1,53 @@
+.location {
+    text-align: center;
+    margin: 20px;
+}
+
+.location h2 {
+    margin-bottom: 20px;
+}
+
+.back-button {
+    background-color: #f44336; /* Red */
+    color: white;
+    padding: 10px 20px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.back-button:hover {
+    background-color: #d32f2f; /* Darker red */
+}
+
+.names {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* gap: 10px; */
+}
+
+.scrollable {
+    max-height: 200px; /* Adjust height to fit approximately 5 rows */
+    overflow-y: auto; /* Enable vertical scrolling */
+    border: 1px solid #ccc; /* Optional: Add a border for better visibility */
+    /* padding: 10px; */
+    border-radius: 5px;
+}
+
+.names button {
+    width: 80%;
+    padding: 10px;
+    background-color: #3498db; /* Light blue background */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.names button:hover {
+    background-color: #2980b9; /* Darker blue on hover */
+}

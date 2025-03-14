@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './BranchList.css'; // Import the CSS file
 
 const BranchList = () => {
     const provinces = ['Kigali', 'East', 'North', 'South', 'West'];
@@ -10,47 +11,65 @@ const BranchList = () => {
 
     const [selectedProvince, setSelectedProvince] = useState(null);
     const [selectedDistrict, setSelectedDistrict] = useState(null);
+    const [displayableNames, setDisplayableNames] = useState(provinces);
+    const [level, setLevel] = useState('province');
 
     const handleProvinceClick = (province) => {
         setSelectedProvince(province);
         setSelectedDistrict(null);
+        setDisplayableNames(getDistricts(province));
+        setLevel('district');
     };
 
     const handleDistrictClick = (district) => {
         setSelectedDistrict(district);
+        setDisplayableNames(branches[district]);
+        setLevel('branch');
+    };
+
+    const handleBackClick = () => {
+        if (level === 'branch') {
+            setDisplayableNames(getDistricts(selectedProvince));
+            setSelectedDistrict(null);
+            setLevel('district');
+        } else if (level === 'district') {
+            setDisplayableNames(provinces);
+            setSelectedProvince(null);
+            setLevel('province');
+        }
     };
 
     const branches = {
         "Gasabo": ["Branch Ga1", "Branch Ga2", "Branch Ga3", "Branch Ga4"],
         "Kicukiro": ["Branch Ki1", "Branch Ki2", "Branch Ki3", "Branch Ki4"],
         "Nyarugenge": ["Branch Ny1", "Branch Ny2", "Branch Ny3", "Branch Ny4"],
-        "Bugesera": ["Branch 7", "Branch 8"],
-        "Gatsibo": ["Branch 9", "Branch 10"],
-        "Kayonza": ["Branch 11", "Branch 12"],
-        "Kirehe": ["Branch 13", "Branch 14"],
-        "Ngoma": ["Branch 15", "Branch 16"],
-        "Nyagatare": ["Branch 17", "Branch 18"],
-        "Rwamagana": ["Branch 19", "Branch 20"],
-        "Burera": ["Branch 21", "Branch 22"],
-        "Gakenke": ["Branch 23", "Branch 24"],
-        "Gicumbi": ["Branch 25", "Branch 26"],
-        "Musanze": ["Branch 27", "Branch 28"],
-        "Rulindo": ["Branch 29", "Branch 30"],
-        "Gisagara": ["Branch 31", "Branch 32"],
-        "Huye": ["Branch 33", "Branch 34"],
-        "Kamonyi": ["Branch 35", "Branch 36"],
-        "Muhanga": ["Branch 37", "Branch 38"],
-        "Nyamagabe": ["Branch 39", "Branch 40"],
-        "Nyanza": ["Branch 41", "Branch 42"],
-        "Nyaruguru": ["Branch 43", "Branch 44"],
-        "Ruhango": ["Branch 45", "Branch 46"],
-        "Karongi": ["Branch 47", "Branch 48"],
-        "Ngororero": ["Branch 49", "Branch 50"],
-        "Nyabihu": ["Branch 51", "Branch 52"],
-        "Nyamasheke": ["Branch 53", "Branch 54"],
-        "Rubavu": ["Branch 55", "Branch 56"],
-        "Rusizi": ["Branch 57", "Branch 58"],
-        "Rutsiro": ["Branch 59", "Branch 60"]
+        "Bugesera": ["Branch Bu1", "Branch Bu2"],
+        "Gatsibo": ["Branch Ga1", "Branch Ga2"],
+        "Kayonza": ["Branch Ka1", "Branch Ka2"],
+        "Kirehe": ["Branch Ki1", "Branch Ki2"],
+        "Ngoma": ["Branch Ng1", "Branch Ng2"],
+        "Nyagatare": ["Branch Ny1", "Branch Ny2"],
+        "Rwamagana": ["Branch Rw1", "Branch Rw2"],
+        "Burera": ["Branch Bu1", "Branch Bu2"],
+        "Gakenke": ["Branch Ga1", "Branch Ga2"],
+        "Gicumbi": ["Branch Gi1", "Branch Gi2"],
+        "Musanze": ["Branch Mu1", "Branch Mu2"],
+        "Rulindo": ["Branch Ru1", "Branch Ru2"],
+        "Gisagara": ["Branch Gi1", "Branch Gi2"],
+        "Huye": ["Branch Hu1", "Branch Hu2"],
+        "Kamonyi": ["Branch Ka1", "Branch Ka2"],
+        "Muhanga": ["Branch Mu1", "Branch Mu2"],
+        "Nyamagabe": ["Branch Ny1", "Branch Ny2"],
+        "Nyanza": ["Branch Ny1", "Branch Ny2"],
+        "Nyaruguru": ["Branch Ny1", "Branch Ny2"],
+        "Ruhango": ["Branch Ru1", "Branch Ru2"],
+        "Karongi": ["Branch Ka1", "Branch Ka2"],
+        "Ngororero": ["Branch Ng1", "Branch Ng2"],
+        "Nyabihu": ["Branch Ny1", "Branch Ny2"],
+        "Nyamasheke": ["Branch Ny1", "Branch Ny2"],
+        "Rubavu": ["Branch Ru1", "Branch Ru2"],
+        "Rusizi": ["Branch Ru1", "Branch Ru2"],
+        "Rutsiro": ["Branch Ru1", "Branch Ru2"]
     };
 
     const getDistricts = (province) => {
@@ -73,31 +92,25 @@ const BranchList = () => {
     return (
         <div className="location">
             <h2>Pick a Location</h2>
-            <div className="provinces">
-                {provinces.map((province) => (
-                    <button key={province} onClick={() => handleProvinceClick(province)}>
-                        {province}
+            {level !== 'province' && (
+                <button className="back-button" onClick={handleBackClick}>Back</button>
+            )}
+            <div className="names scrollable">
+                {displayableNames.map((name) => (
+                    <button
+                        key={name}
+                        onClick={() => {
+                            if (level === 'province') {
+                                handleProvinceClick(name);
+                            } else if (level === 'district') {
+                                handleDistrictClick(name);
+                            }
+                        }}
+                    >
+                        {name}
                     </button>
                 ))}
             </div>
-            {selectedProvince && (
-                <div className="districts">
-                    <h3>{selectedProvince} Districts</h3>
-                    {getDistricts(selectedProvince).map((district) => (
-                        <button key={district} onClick={() => handleDistrictClick(district)}>
-                            {district}
-                        </button>
-                    ))}
-                </div>
-            )}
-            {selectedDistrict && (
-                <div className="branches">
-                    <h3>{selectedDistrict} Branches</h3>
-                    {branches[selectedDistrict].map((branch) => (
-                        <div key={branch}>{branch}</div>
-                    ))}
-                </div>
-            )}
         </div>
     );
 };

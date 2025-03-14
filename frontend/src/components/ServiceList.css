@@ -1,0 +1,34 @@
+.service {
+    text-align: center;
+    margin: 20px;
+}
+
+.service h2 {
+    margin-bottom: 20px;
+}
+
+.service-list {
+    max-height: 200px; /* Adjust height to fit approximately 5 rows */
+    overflow-y: auto; /* Enable vertical scrolling */
+    border: 1px solid #ccc; /* Optional: Add a border for better visibility */
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.service-list button {
+    display: block;
+    width: 100%;
+    margin: 5px 0;
+    padding: 10px;
+    background-color: #3498db; /* Light blue background */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    text-align: left;
+}
+
+.service-list button:hover {
+    background-color: #2980b9; /* Darker blue on hover */
+}
