@@ -7,6 +7,13 @@ exports.getAllAppointments = (req, res) => {
     });
 };
 
+exports.getAllAppointmentsToday = (req, res) => {
+    Appointment.getAllToday((err, results) => {
+        if (err) return res.status(500).json({ error: err.message });
+        res.json(results);
+    });
+};
+
 exports.getAppointmentById = (req, res) => {
     const { id } = req.params;
     Appointment.getById(id, (err, results) => {

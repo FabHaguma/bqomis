@@ -3,7 +3,11 @@ const { getByDistrict } = require('./branchModel');
 
 const Appointment = {
     getAll: (callback) => {
-        db.query('SELECT * FROM appointments', callback);
+        db.query('SELECT * FROM appointments ORDER BY appointment_time', callback);
+    },
+
+    getAllToday: (callback) => {
+        db.query('SELECT * FROM appointments WHERE appointment_date = CURDATE() ORDER BY appointment_time', callback);
     },
 
     getById: (appointmentId, callback) => {

@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
-import './BranchList.css'; // Import the CSS file
+import React, { useState, useEffect  } from 'react';
+import './styles/BranchList.css'; // Import the CSS file for styling
+import dataService from '../DataService.js';
 
 const BranchList = () => {
     const provinces = ['Kigali', 'East', 'North', 'South', 'West'];
@@ -9,10 +10,27 @@ const BranchList = () => {
     const southDistricts = ['Gisagara', 'Huye', 'Kamonyi', 'Muhanga', 'Nyamagabe', 'Nyanza', 'Nyaruguru', 'Ruhango'];
     const westDistricts = ['Karongi', 'Ngororero', 'Nyabihu', 'Nyamasheke', 'Rubavu', 'Rusizi', 'Rutsiro'];
 
+    const [branchesByDistrict, setBranchesByDistrictDB] = useState([]);
+
     const [selectedProvince, setSelectedProvince] = useState(null);
     const [selectedDistrict, setSelectedDistrict] = useState(null);
     const [displayableNames, setDisplayableNames] = useState(provinces);
     const [level, setLevel] = useState('province');
+
+    useEffect(() => {
+        // Fetch branches and group them by district
+        dataService.getBranches().then((branches) => {
+            // setBranchesDB(branches);
+            const groupedByDistrict = branches.reduce((elt, branch) => {
+                if (!elt[branch.district]) {
+                    elt[branch.district] = [];
+                }
+                elt[branch.district].push(branch.name);
+                return elt;
+            }, {});
+            setBranchesByDistrictDB(groupedByDistrict);
+        });
+    }, []);
 
     const handleProvinceClick = (province) => {
         setSelectedProvince(province);
@@ -23,7 +41,11 @@ const BranchList = () => {
 
     const handleDistrictClick = (district) => {
         setSelectedDistrict(district);
-        setDisplayableNames(branches[district]);
+        if(!branchesByDistrict[district] || branchesByDistrict[district].length === 0) {
+            // If no branches are found for the district, use fallback branches
+            setDisplayableNames(branchesByDistrict[district]);
+        }
+        else setDisplayableNames(fallbackBranches[district]);
         setLevel('branch');
     };
 
@@ -39,7 +61,7 @@ const BranchList = () => {
         }
     };
 
-    const branches = {
+    const fallbackBranches = {
         "Gasabo": ["Branch Ga1", "Branch Ga2", "Branch Ga3", "Branch Ga4"],
         "Kicukiro": ["Branch Ki1", "Branch Ki2", "Branch Ki3", "Branch Ki4"],
         "Nyarugenge": ["Branch Ny1", "Branch Ny2", "Branch Ny3", "Branch Ny4"],

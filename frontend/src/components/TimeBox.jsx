@@ -1,5 +1,5 @@
 import React from 'react';
-import './TimeBox.css'; // Import the CSS file for styling
+import './styles/TimeBox.css'; // Import the CSS file for styling
 
 const TimeBox = ({ queueSize }) => {
     // Determine the color class based on the queue size

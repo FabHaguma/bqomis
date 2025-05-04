@@ -1,23 +1,45 @@
-import React from 'react';
-import './ServiceList.css'; // Import the CSS file for styling
+import React, { useEffect, useState } from 'react';
+import './styles/ServiceList.css'; // Import the CSS file for styling
+import dataService from '../DataService.js';
 
 const ServiceList = () => {
+    const [services, setServices] = useState([]);
+
+    useEffect(() => {
+        // Fetch services
+        dataService.getServices().then(setServices);
+    }, []);
+
+    // Hardcoded fallback services
+    const fallbackServices = [
+        'Withdraw-f',
+        'Deposit-f',
+        'Check Book-f',
+        'Foreign Currency-f',
+        'Loan Application-f',
+        'Account Opening-f',
+        'Balance Inquiry-f',
+        'Card Replacement-f',
+        'Bill Payment-f',
+        'Money Transfer-f',
+        'Fixed Deposit-f',
+        'Investment Services-f',
+    ];
+
+    // Determine which services to display
+    const displayedServices = services && services.length > 0
+        ? services.map((service) => service.name) // Extract names from fetched services
+        : fallbackServices;
+
     return (
         <div className="service">
             <h2>Pick a Service</h2>
             <div className="service-list">
-                <button>Withdraw</button>
-                <button>Deposit</button>
-                <button>Check Book</button>
-                <button>Foreign Currency</button>
-                <button>Loan Application</button>
-                <button>Account Opening</button>
-                <button>Balance Inquiry</button>
-                <button>Card Replacement</button>
-                <button>Bill Payment</button>
-                <button>Money Transfer</button>
-                <button>Fixed Deposit</button>
-                <button>Investment Services</button>
+                {displayedServices.map((serviceName, index) => (
+                    <button key={index}>
+                        {serviceName}
+                    </button>
+                ))}
             </div>
         </div>
     );

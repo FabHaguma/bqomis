@@ -1,6 +1,6 @@
 import React from 'react';
 import TimeBox from './TimeBox'; // Import the TimeBox component
-import './TimeSlotService.css'; // Import the CSS file for styling
+import './styles/TimeSlotService.css'; // Import the CSS file for styling
 
 const TimeSlotService = () => {
     // Example data: services with queue sizes for 8 time slots

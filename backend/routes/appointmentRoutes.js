@@ -3,6 +3,7 @@ const router = express.Router();
 const appointmentController = require('../controllers/appointmentController');
 
 router.get('/', appointmentController.getAllAppointments);
+router.get('/today', appointmentController.getAllAppointmentsToday);
 router.get('/:id', appointmentController.getAppointmentById);
 router.get('/byBranchAndDate', appointmentController.getAppointmentsByBranchAndDate);
 router.get('/byBranchAndService', appointmentController.getAppointmentsByBranchAndService);
