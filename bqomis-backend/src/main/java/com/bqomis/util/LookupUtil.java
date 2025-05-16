@@ -111,7 +111,7 @@ public class LookupUtil {
     public List<Branch> findBranchesByDistrictName(String districtName) {
         List<Branch> brancheList = new ArrayList<>();
         for (Branch branch : branchMap.values()) {
-            if (branch.getDistrict().equals(districtName)) {
+            if (branch.getDistrict().equalsIgnoreCase(districtName)) {
                 brancheList.add(branch);
             }
         }

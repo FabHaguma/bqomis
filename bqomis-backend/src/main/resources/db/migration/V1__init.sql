@@ -46,7 +46,8 @@ CREATE TABLE IF NOT EXISTS services (
 CREATE TABLE IF NOT EXISTS branch_services (
     id SERIAL PRIMARY KEY,
     branch_id INT NOT NULL REFERENCES branches(id) ON DELETE CASCADE,
-    service_id INT NOT NULL REFERENCES services(id) ON DELETE CASCADE
+    service_id INT NOT NULL REFERENCES services(id) ON DELETE CASCADE,
+    available BOOLEAN NOT NULL DEFAULT TRUE -- Indicates if the service is available at the branch
 );
 
 -- Create table for appointments

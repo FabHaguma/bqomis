@@ -1,0 +1,92 @@
+// --- COLOR PALETTE ---
+@use "sass:color";
+
+// Primary Colors (Brand colors)
+$primary-color: #646cff;         // Example: Vite purple
+$primary-color-dark: #535bf2;    // Darker shade for hover/active
+$primary-color-light: #787eff;   // Lighter shade if needed
+
+// Secondary Colors (Supporting colors)
+$secondary-color: #4CAF50;       // Example: Green
+$secondary-color-dark: #388E3C;
+$secondary-color-light: #81C784;
+
+// Accent/Highlight Colors
+$accent-color: #FFC107;          // Example: Amber/Yellow
+$accent-color-dark: #FFA000;
+$accent-color-light: #FFD54F;
+
+// Neutral/Grayscale Colors (for text, backgrounds, borders)
+$neutral-darkest: #1a1a1a;       // Very dark, near black for deep backgrounds
+$neutral-darker: #242424;        // Dark background (Vite default)
+$neutral-dark: #2c2c2e;          // Sidebar background
+$neutral-medium-dark: #3a3a3a;   // Form container background
+$neutral-medium: #555555;        // Borders, subtle text
+$neutral-medium-light: #777777;  // Lighter text, disabled states
+$neutral-light: #aaaaaa;         // Light text on dark backgrounds
+$neutral-lighter: #cccccc;       // Very light text
+$neutral-lightest: #f0f0f0;      // Near white for text on dark backgrounds
+$neutral-white: #ffffff;         // Pure white
+
+// Semantic Colors (for states like success, error, warning)
+$success-color: #28a745;         // Green for success messages
+$error-color: #dc3545;           // Red for error messages
+$warning-color: #ffc107;         // Yellow for warnings
+$info-color: #17a2b8;            // Blue for informational messages
+
+// --- UI ELEMENT COLORS ---
+// These can map to your palette or be specific overrides
+
+// Backgrounds
+$bg-primary: $neutral-darker;
+$bg-secondary: $neutral-dark;    // e.g., for sidebars, cards
+$bg-tertiary: $neutral-medium-dark; // e.g., for input fields, modal backgrounds
+
+// Text
+$text-primary: $neutral-lightest;
+$text-secondary: $neutral-light;
+$text-muted: $neutral-medium-light;
+$text-link: $primary-color;
+$text-link-hover: $primary-color-dark;
+$text-on-primary-bg: $neutral-white; // Text color for elements with $primary-color background
+
+// Borders
+$border-color: $neutral-medium;
+$border-color-strong: $neutral-medium-dark;
+
+// Buttons
+$btn-primary-bg: $primary-color;
+$btn-primary-text: $text-on-primary-bg;
+$btn-primary-hover-bg: $primary-color-dark;
+
+$btn-danger-bg: $error-color;
+$btn-danger-text: $neutral-white;
+// $btn-danger-hover-bg: darken($error-color, 10%);
+// $btn-danger-hover-bg: darken($error-color, 10%);
+$btn-danger-hover-bg: color.adjust($error-color, $lightness: -10%);
+// $btn-danger-hover-bg: adjust($error-color, $lightness: -10%);
+
+
+// Add more as needed for inputs, focus states, etc.
+// $input-bg: $bg-tertiary;
+// $input-text: $text-primary;
+// $input-border: $border-color;
+// $input-focus-border: $primary-color;
+
+// --- TYPOGRAPHY --- (Optional, but good to have here)
+$font-family-sans-serif: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+$font-size-base: 1rem;
+$line-height-base: 1.5;
+// ... more font variables
+
+// --- SPACING --- (Optional)
+$spacing-xs: 4px;
+$spacing-sm: 8px;
+$spacing-md: 16px;
+$spacing-lg: 24px;
+$spacing-xl: 32px;
+// ... more spacing variables
+
+// --- BORDERS ---
+$border-radius-sm: 4px;
+$border-radius-md: 8px;

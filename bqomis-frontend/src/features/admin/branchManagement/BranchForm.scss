@@ -1,0 +1,77 @@
+@use '../../../assets/styles/variables.scss' as styleVar;
+
+.branch-form {
+  display: flex;
+  flex-direction: column;
+  gap: styleVar.$spacing-lg * 0.8; // Adjusted gap
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: styleVar.$spacing-xs;
+
+    label {
+      font-weight: bold;
+      color: styleVar.$text-secondary;
+      font-size: 0.9em;
+      margin-bottom: styleVar.$spacing-xs / 2;
+    }
+
+    input[type="text"],
+    select {
+      padding: styleVar.$spacing-sm (styleVar.$spacing-sm * 1.5);
+      border: 1px solid styleVar.$border-color;
+      border-radius: styleVar.$border-radius-sm;
+      background-color: styleVar.$bg-tertiary;
+      color: styleVar.$text-primary;
+      font-size: 1em;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+
+      &:focus {
+        outline: none;
+        border-color: styleVar.$primary-color;
+        box-shadow: 0 0 0 2px rgba(styleVar.$primary-color, 0.3);
+      }
+
+      &:disabled {
+        background-color: lighten(styleVar.$bg-tertiary, 3%);
+        opacity: 0.7;
+        cursor: not-allowed;
+      }
+      
+      &::placeholder { // If you add placeholders
+        color: styleVar.$neutral-medium-light;
+      }
+    }
+    
+    input[type="text"]:read-only {
+      background-color: lighten(styleVar.$bg-tertiary, 5%); // Slightly different for read-only
+      // cursor: default; // Or not-allowed if it should feel more static
+      opacity: 0.8;
+    }
+  }
+
+  // Re-use alert styling from AdminBranchManagementPage or define globally
+  .error-message.alert.alert-danger {
+    padding: styleVar.$spacing-md;
+    margin-bottom: 0; // Form already has gap
+    border: 1px solid transparent;
+    border-radius: styleVar.$border-radius-sm;
+    color: darken(styleVar.$error-color, 10%);
+    background-color: lighten(styleVar.$error-color, 35%);
+    border-color: lighten(styleVar.$error-color, 25%);
+    font-size: 0.9em;
+  }
+
+  .form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: styleVar.$spacing-md;
+    margin-top: styleVar.$spacing-md; // Add some space above actions
+
+    .btn {
+      // Assuming global .btn styles from AdminBranchManagementPage.scss apply
+      // or are defined in your main.scss/_buttons.scss
+    }
+  }
+}

@@ -1,0 +1,67 @@
+@use '../../../assets/styles/variables.scss' as styleVar;
+
+.service-form {
+  display: flex;
+  flex-direction: column;
+  gap: styleVar.$spacing-lg * 0.8;
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: styleVar.$spacing-xs;
+
+    label {
+      font-weight: bold;
+      color: styleVar.$text-secondary;
+      font-size: 0.9em;
+      margin-bottom: styleVar.$spacing-xs / 2;
+    }
+
+    input[type="text"],
+    textarea {
+      padding: styleVar.$spacing-sm (styleVar.$spacing-sm * 1.5);
+      border: 1px solid styleVar.$border-color;
+      border-radius: styleVar.$border-radius-sm;
+      background-color: styleVar.$bg-tertiary;
+      color: styleVar.$text-primary;
+      font-size: 1em;
+      font-family: inherit; // Ensure textarea inherits font
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+
+      &:focus {
+        outline: none;
+        border-color: styleVar.$primary-color;
+        box-shadow: 0 0 0 2px rgba(styleVar.$primary-color, 0.3);
+      }
+
+      &:disabled {
+        background-color: lighten(styleVar.$bg-tertiary, 3%);
+        opacity: 0.7;
+        cursor: not-allowed;
+      }
+    }
+    textarea {
+      resize: vertical; // Allow vertical resize for textarea
+    }
+  }
+  
+  .error-message.alert.alert-danger { // Copied for consistency
+    padding: styleVar.$spacing-md;
+    margin-bottom: 0; 
+    border: 1px solid transparent;
+    border-radius: styleVar.$border-radius-sm;
+    color: darken(styleVar.$error-color, 10%);
+    background-color: lighten(styleVar.$error-color, 35%);
+    border-color: lighten(styleVar.$error-color, 25%);
+    font-size: 0.9em;
+  }
+
+  .form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: styleVar.$spacing-md;
+    margin-top: styleVar.$spacing-md;
+
+    // .btn styles assumed to be global or defined as before
+  }
+}

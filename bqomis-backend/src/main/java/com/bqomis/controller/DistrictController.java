@@ -21,7 +21,7 @@ public class DistrictController {
     }
 
     @GetMapping("/{provinceName}")
-    public ResponseEntity<List<String>> getDistrictById(@PathVariable String provinceName) {
+    public ResponseEntity<List<String>> getDistrictByProvinceName(@PathVariable String provinceName) {
         return ResponseEntity.ok(districtService.findByProvinceName(provinceName));
     }
 

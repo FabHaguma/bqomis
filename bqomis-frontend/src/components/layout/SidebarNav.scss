@@ -1,0 +1,93 @@
+@use '../../assets/styles/variables.scss' as styleVar;
+
+.sidebar-nav {
+  width: 250px;
+  background-color: styleVar.$neutral-dark;
+  padding: styleVar.$spacing-lg 0;
+  display: flex;
+  flex-direction: column;
+  color: styleVar.$neutral-lightest;
+  min-height: 85vh;
+
+  &__profile {
+    padding: styleVar.$spacing-md styleVar.$spacing-lg;
+    margin-bottom: styleVar.$spacing-lg;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid styleVar.$neutral-medium;
+
+    &-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: styleVar.$primary-color;
+      color: styleVar.$neutral-white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      margin-right: styleVar.$spacing-md;
+      font-size: 1.2em;
+    }
+
+    &-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    &-name {
+      font-weight: bold;
+      margin: 0;
+      font-size: 0.95em;
+    }
+
+    &-email {
+      font-size: 0.8em;
+      color: styleVar.$neutral-light;
+      margin: 0;
+      word-break: break-all;
+    }
+  }
+
+  nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    padding: styleVar.$spacing-md styleVar.$spacing-lg;
+    color: styleVar.$neutral-lighter;
+    text-decoration: none;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    font-size: 0.95em;
+
+    &:hover {
+      background-color: styleVar.$neutral-medium-dark;
+      color: styleVar.$neutral-white;
+    }
+
+    &.active {
+      background-color: styleVar.$primary-color;
+      color: styleVar.$neutral-white;
+      font-weight: bold;
+
+      .sidebar-nav__icon {
+        // color: styleVar.$neutral-white;
+      }
+    }
+  }
+
+  &__icon {
+    margin-right: styleVar.$spacing-md;
+    font-size: 1.1em;
+    width: 20px;
+    text-align: center;
+  }
+
+  &__label {
+    flex-grow: 1;
+  }
+}

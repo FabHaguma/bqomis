@@ -1,8 +1,10 @@
 package com.bqomis.controller;
 
+import com.bqomis.dto.UserDTO;
 import com.bqomis.model.User;
 import com.bqomis.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,18 +18,24 @@ public class UserController {
     private UserService userService;
 
     @GetMapping
-    public List<User> getAllUsers() {
-        return userService.findAll();
+    public ResponseEntity<List<User>> getAllUsers() {
+        return ResponseEntity.ok(userService.findAll());
     }
 
     @GetMapping("/{id}")
-    public Optional<User> getUserById(@PathVariable Long id) {
-        return userService.findById(id);
+    public ResponseEntity<Optional<User>> getUserById(@PathVariable Long id) {
+        return ResponseEntity.ok(userService.findById(id));
+    }
+
+    @PostMapping("/authenticate")
+    public ResponseEntity<UserDTO> authenticate(@RequestBody User user) {
+        UserDTO userDTO = userService.authenticate(user.getEmail(), user.getPassword());
+        return ResponseEntity.ok(userDTO);
     }
 
     @PostMapping
-    public User createUser(@RequestBody User user) {
-        return userService.save(user);
+    public ResponseEntity<User> createUser(@RequestBody User user) {
+        return ResponseEntity.ok(userService.save(user));
     }
 
     @DeleteMapping("/{id}")

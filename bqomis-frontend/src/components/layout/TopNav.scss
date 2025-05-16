@@ -1,0 +1,41 @@
+@use '../../assets/styles/variables.scss' as styleVar;
+
+.top-nav {
+  background-color: styleVar.$neutral-dark; // Use variable
+  color: styleVar.$text-on-primary-bg;    // Or a specific text color like $neutral-lightest
+  padding: styleVar.$spacing-sm styleVar.$spacing-md; // Use spacing styleVar
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 60px; // Or use a $header-height variable
+
+  &__title {
+    font-size: 1.5em; // Or $font-size-lg
+    font-weight: bold;
+  }
+
+  &__user-actions {
+    display: flex;
+    align-items: center;
+  }
+
+  &__username {
+    margin-right: styleVar.$spacing-md;
+    font-size: 0.9em; // Or $font-size-sm
+    color: styleVar.$neutral-lighter;
+  }
+
+  &__sign-out {
+    background-color: styleVar.$btn-danger-bg;
+    color: styleVar.$btn-danger-text;
+    border: none;
+    padding: styleVar.$spacing-sm styleVar.$spacing-md * 0.75; // Mix and match
+    border-radius: styleVar.$border-radius-sm;
+    cursor: pointer;
+    font-size: 0.9em;
+
+    &:hover {
+      background-color: styleVar.$btn-danger-hover-bg;
+    }
+  }
+}

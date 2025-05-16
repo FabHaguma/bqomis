@@ -22,4 +22,9 @@ public interface AppointmentRepository extends JpaRepository<Appointment, Long> 
     @Query("SELECT a FROM Appointment a WHERE a.date = :anyDate")
     List<Appointment> findAppointmentsByDate(@Param("anyDate") LocalDate anyDate);
 
+    @Query("SELECT a FROM Appointment a WHERE a.date = :anyDate AND a.branchServiceId = :branchServiceId")
+    List<Appointment> findAppointmentsByDateAndBranchServiceId(
+            @Param("anyDate") LocalDate anyDate,
+            @Param("branchServiceId") Long branchServiceId);
+
 }

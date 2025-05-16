@@ -1,0 +1,63 @@
+@use '../../assets/styles/variables.scss' as styleVar;
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; // Ensure it's on top
+}
+
+.modal-content {
+  background-color: styleVar.$bg-secondary; // Use your SCSS variable
+  padding: styleVar.$spacing-lg;
+  border-radius: styleVar.$border-radius-md;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  min-width: 300px;
+  max-width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+  color: styleVar.$text-primary;
+
+  @media (min-width: 600px) {
+    min-width: 500px;
+    max-width: 60%;
+  }
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid styleVar.$border-color;
+  padding-bottom: styleVar.$spacing-md;
+  margin-bottom: styleVar.$spacing-md;
+
+  .modal-title {
+    margin: 0;
+    font-size: 1.5em; // Or use a font size variable
+  }
+
+  .modal-close-button {
+    background: none;
+    border: none;
+    font-size: 1.8em;
+    cursor: pointer;
+    color: styleVar.$text-secondary;
+    padding: 0;
+    line-height: 1;
+
+    &:hover {
+      color: styleVar.$text-primary;
+    }
+  }
+}
+
+.modal-body {
+  // Styles for the content area if needed
+}

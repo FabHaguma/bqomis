@@ -36,6 +36,12 @@ public class BranchServiceController {
         return branchService.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
+    @GetMapping("/branch/{branchId}")
+    public ResponseEntity<List<BranchServiceDTO>> getBranchServicesByBranchId(@PathVariable Long branchId) {
+        List<BranchServiceDTO> branchServices = branchServiceService.findBrancheServiceByBranchId(branchId);
+        return ResponseEntity.ok(branchServices);
+    }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteBranchServiceById(@PathVariable Long id) {
         branchServiceService.deleteBrancheServiceById(id);

@@ -1,0 +1,39 @@
+@use '../assets/styles/variables.scss' as styleVar;
+
+.notfound-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: styleVar.$neutral-white;
+  color: styleVar.$neutral-darkest;
+
+  h1 {
+    font-size: 6rem;
+    margin: 0;
+  }
+
+  h2 {
+    margin: styleVar.$spacing-md 0;
+  }
+
+  p {
+    margin-bottom: styleVar.$spacing-lg;
+  }
+
+  .notfound-link {
+    margin-top: styleVar.$spacing-xl;
+    padding: 0.75rem 2rem;
+    background: styleVar.$primary-color-dark;
+    color: styleVar.$neutral-white;
+    border-radius: styleVar.$border-radius-md;
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+    transition: background 0.2s;
+    &:hover {
+      background: styleVar.$primary-color;
+    }
+  }
+}

@@ -1,17 +1,21 @@
 package com.bqomis.util;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.bqomis.dto.AppointmentDTO;
 import com.bqomis.dto.BranchDTO;
 import com.bqomis.dto.BranchServiceDTO;
 import com.bqomis.model.Service;
 import com.bqomis.dto.ServiceDTO;
 import com.bqomis.dto.UserDTO;
+import com.bqomis.model.Appointment;
 import com.bqomis.model.Branch;
 import com.bqomis.model.BranchService;
 import com.bqomis.model.User;
-import com.bqomis.util.LookupUtil;
 
 @Component
 public class MapperUtil {
@@ -74,5 +78,33 @@ public class MapperUtil {
         serviceDTO.setName(service.getName());
         serviceDTO.setDescription(service.getDescription());
         return serviceDTO;
+    }
+
+    public AppointmentDTO toAppointmentDTO(Appointment appointment) {
+        if (appointment == null) {
+            return null;
+        }
+        AppointmentDTO appointmentDTO = new AppointmentDTO();
+        appointmentDTO.setId(appointment.getId());
+        appointmentDTO.setUserId(appointment.getUserId());
+        appointmentDTO.setBranchServiceId(appointment.getBranchServiceId());
+        appointmentDTO.setDate(appointment.getDate().toString());
+        appointmentDTO.setTime(appointment.getTime().toString());
+        appointmentDTO.setStatus(appointment.getStatus());
+        return appointmentDTO;
+    }
+
+    public Appointment toAppointment(AppointmentDTO appointmentDTO) {
+        if (appointmentDTO == null) {
+            return null;
+        }
+        Appointment appointment = new Appointment();
+        appointment.setId(appointmentDTO.getId());
+        appointment.setUserId(appointmentDTO.getUserId());
+        appointment.setBranchServiceId(appointmentDTO.getBranchServiceId());
+        appointment.setDate(LocalDate.parse(appointmentDTO.getDate()));
+        appointment.setTime(LocalTime.parse(appointmentDTO.getTime()));
+        appointment.setStatus(appointmentDTO.getStatus());
+        return appointment;
     }
 }

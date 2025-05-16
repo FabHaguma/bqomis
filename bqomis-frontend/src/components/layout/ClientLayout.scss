@@ -1,0 +1,20 @@
+@use '../../assets/styles/variables.scss' as styleVar;
+
+// Basic styling for ClientLayout
+.client-layout {
+  background: styleVar.$neutral-lightest;
+  color: #000;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  border: 3px solid styleVar.$primary-color-dark;
+}
+
+.client-layout__main{
+  display: flex;
+  align-items: stretch;
+}
+
+.client-layout__content{
+  padding: styleVar.$spacing-xl;
+}

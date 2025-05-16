@@ -1,0 +1,21 @@
+@use '../../assets/styles/variables.scss' as styleVar;
+
+.confirmation-dialog {
+  .confirmation-message {
+    margin-bottom: styleVar.$spacing-lg;
+    font-size: 1.1em;
+    line-height: 1.6;
+  }
+
+  .confirmation-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: styleVar.$spacing-md;
+
+    .btn { // Assuming you have base .btn styles
+      padding: styleVar.$spacing-sm styleVar.$spacing-md;
+      font-weight: bold;
+      // Add more specific button styling if needed here or rely on global .btn styles
+    }
+  }
+}

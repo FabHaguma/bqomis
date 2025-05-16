@@ -1,0 +1,56 @@
+@use '../../assets/styles/variables.scss' as styleVar;
+
+.hour-chunk-status-container {
+  margin: styleVar.$spacing-md 0;
+
+  .status-label {
+    font-size: 0.85em;
+    color: styleVar.$text-muted;
+    margin-bottom: styleVar.$spacing-sm;
+    font-weight: 500;
+  }
+}
+
+.chunks-wrapper {
+  display: flex;
+  justify-content: space-between; // Distribute chunks evenly
+  gap: 2px; // Small gap between chunks
+  align-items: flex-end; // Align bars at the bottom
+  background-color: lighten(styleVar.$bg-tertiary, 5%);
+  padding: styleVar.$spacing-sm styleVar.$spacing-xs;
+  border-radius: styleVar.$border-radius-sm;
+}
+
+.hour-chunk-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  flex: 1; // Allow items to take up space
+
+  .chunk-bar {
+    width: 100%; // Bar takes full width of its container
+    min-width: 15px; // Minimum width for visibility
+    height: 20px; // Default height
+    border-radius: 2px; // Slightly rounded bars
+    margin-bottom: styleVar.$spacing-xs / 2;
+    transition: background-color 0.3s ease;
+
+    &.chunk-green {
+      background-color: styleVar.$success-color; // Use your success color
+      // height: 15px; // Optionally vary height by status
+    }
+    &.chunk-yellow {
+      background-color: styleVar.$warning-color; // Use your warning color
+      // height: 25px;
+    }
+    &.chunk-red {
+      background-color: styleVar.$error-color; // Use your error color
+      // height: 35px;
+    }
+  }
+  .chunk-hour-label {
+    font-size: 0.7em;
+    color: styleVar.$text-muted;
+  }
+}

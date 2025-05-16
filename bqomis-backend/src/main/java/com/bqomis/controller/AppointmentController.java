@@ -1,5 +1,6 @@
 package com.bqomis.controller;
 
+import com.bqomis.dto.AppointmentDTO;
 import com.bqomis.model.Appointment;
 import com.bqomis.service.AppointmentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +30,7 @@ public class AppointmentController {
     }
 
     @PostMapping
-    public ResponseEntity<Appointment> createAppointment(@RequestBody Appointment appointment) {
+    public ResponseEntity<Appointment> createAppointment(@RequestBody AppointmentDTO appointment) {
         Appointment savedAppointment = appointmentService.save(appointment);
         return ResponseEntity.ok(savedAppointment);
     }
@@ -67,6 +68,30 @@ public class AppointmentController {
             @PathVariable Long serviceId) {
         List<Appointment> appointments = appointmentService.findTodayAppointmentsByDistrictAndService(districtName,
                 serviceId);
+        return ResponseEntity.ok(appointments);
+    }
+
+    @GetMapping("/branch/{branchId}/")
+    public ResponseEntity<List<Appointment>> getAppointmentsByBranchAndDate(@PathVariable Long branchId) {
+        List<Appointment> appointments = appointmentService.findTodayAppointmentsByBranch(branchId);
+        return ResponseEntity.ok(appointments);
+    }
+
+    @GetMapping("/date/branchServiceId/")
+    public ResponseEntity<List<Appointment>> getAppointmentsByDateAndBranchServiceId(@RequestParam String date,
+            @RequestParam Long branchServiceId) {
+        LocalDate parsedDate = LocalDate.parse(date);
+        List<Appointment> appointments = appointmentService.findAppointmentsByDateAndBranchServiceId(parsedDate,
+                branchServiceId);
+        return ResponseEntity.ok(appointments);
+    }
+
+    @GetMapping("/date/branchId/")
+    public ResponseEntity<List<Appointment>> getAppointmentsByDateAndBranchId(@RequestParam String date,
+            @RequestParam Long branchId) {
+        LocalDate parsedDate = LocalDate.parse(date);
+        List<Appointment> appointments = appointmentService.findAppointmentsByDateAndBranchId(parsedDate,
+                branchId);
         return ResponseEntity.ok(appointments);
     }
 

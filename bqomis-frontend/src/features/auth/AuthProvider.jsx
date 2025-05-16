@@ -1,0 +1,1 @@
+// Shared auth provider logic

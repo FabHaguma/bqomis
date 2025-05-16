@@ -1,0 +1,151 @@
+@use '../../assets/styles/variables.scss' as styleVar;
+@use '../../assets/styles/buttonStyles.scss';
+
+.client-book-appointment-page {
+  padding: styleVar.$spacing-lg;
+  max-width: 700px; // Center content nicely
+  margin: 0 auto;
+
+  .page-header {
+    margin-bottom: styleVar.$spacing-lg;
+    text-align: center;
+    h1 {
+      font-size: 1.8em;
+      color: styleVar.$text-primary;
+    }
+  }
+
+  .booking-details-summary {
+    background-color: styleVar.$bg-secondary;
+    padding: styleVar.$spacing-lg;
+    border-radius: styleVar.$border-radius-md;
+    margin-bottom: styleVar.$spacing-lg;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+
+    h2 {
+      font-size: 1.3em;
+      color: styleVar.$text-primary;
+      margin-top: 0;
+      margin-bottom: styleVar.$spacing-md;
+    }
+    p {
+      margin: styleVar.$spacing-xs 0;
+      color: styleVar.$text-secondary;
+      strong {
+        color: styleVar.$text-primary;
+      }
+    }
+  }
+
+  .error-message.alert.alert-danger,
+  .success-message.alert.alert-success {
+    padding: styleVar.$spacing-md;
+    margin-bottom: styleVar.$spacing-lg;
+    border: 1px solid transparent;
+    border-radius: styleVar.$border-radius-sm;
+    text-align: center;
+  }
+  .error-message.alert.alert-danger {
+    color: darken(styleVar.$error-color, 10%);
+    background-color: lighten(styleVar.$error-color, 35%);
+    border-color: lighten(styleVar.$error-color, 25%);
+  }
+  .success-message.alert.alert-success {
+    color: darken(styleVar.$success-color, 10%);
+    background-color: lighten(styleVar.$success-color, 45%);
+    border-color: lighten(styleVar.$success-color, 25%);
+  }
+
+  .booking-form {
+    background-color: styleVar.$bg-secondary;
+    padding: styleVar.$spacing-xl;
+    border-radius: styleVar.$border-radius-md;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+
+    .loading-text { // For "Loading time slots..."
+        font-style: italic;
+        color: styleVar.$text-muted;
+        padding: styleVar.$spacing-sm 0;
+    }
+
+    .no-slots-message {
+        color: styleVar.$text-secondary;
+        background-color: lighten(styleVar.$bg-tertiary, 3%);
+        padding: styleVar.$spacing-md;
+        border-radius: styleVar.$border-radius-sm;
+        text-align: center;
+        font-style: italic;
+    }
+  }
+
+  .form-group {
+    margin-bottom: styleVar.$spacing-lg;
+
+    label {
+      display: block;
+      font-weight: bold;
+      color: styleVar.$text-secondary;
+      margin-bottom: styleVar.$spacing-sm;
+      font-size: 1.1em;
+    }
+
+    input[type="date"] {
+      width: 100%;
+      padding: styleVar.$spacing-md;
+      border: 1px solid styleVar.$border-color;
+      border-radius: styleVar.$border-radius-sm;
+      background-color: styleVar.$bg-tertiary;
+      color: styleVar.$text-primary;
+      font-size: 1em;
+      box-sizing: border-box; // Ensure padding doesn't expand width
+      
+      // Styling for the date picker icon (browser-dependent)
+      &::-webkit-calendar-picker-indicator {
+        filter: invert(0.8); // Make it visible on dark backgrounds
+      }
+    }
+  }
+
+  .time-slots-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+    gap: styleVar.$spacing-md;
+  }
+
+  .time-slot-btn {
+    padding: styleVar.$spacing-sm styleVar.$spacing-md;
+    border: 1px solid styleVar.$primary-color-light;
+    border-radius: styleVar.$border-radius-sm;
+    background-color: transparent;
+    color: styleVar.$primary-color-light;
+    cursor: pointer;
+    text-align: center;
+    font-size: 0.95em;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+
+    &:hover:not(:disabled) {
+      background-color: lighten(styleVar.$primary-color, 10%);
+      color: styleVar.$text-on-primary-bg;
+      border-color: styleVar.$primary-color;
+    }
+
+    &.selected {
+      background-color: styleVar.$primary-color;
+      color: styleVar.$text-on-primary-bg;
+      border-color: styleVar.$primary-color-dark;
+      font-weight: bold;
+    }
+
+    &:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+  }
+
+  .btn-confirm-booking { // Assuming global .btn and .btn-primary styles
+    width: 100%;
+    padding: styleVar.$spacing-md;
+    font-size: 1.1em;
+    margin-top: styleVar.$spacing-lg;
+  }
+}

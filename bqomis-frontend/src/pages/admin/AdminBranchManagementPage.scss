@@ -1,0 +1,122 @@
+@use '../../assets/styles/variables.scss' as styleVar;
+@use '../../assets/styles/buttonStyles.scss';
+
+.admin-branch-management-page {
+  padding: styleVar.$spacing-lg;
+
+  .page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: styleVar.$spacing-lg;
+
+    h1 {
+      margin: 0;
+      font-size: 2em; // Or use a font variable
+      color: styleVar.$neutral-darkest;
+    }
+  }
+
+  // Basic styles for alerts, can be in a global _alerts.scss too
+  .alert {
+    padding: styleVar.$spacing-md;
+    margin-bottom: styleVar.$spacing-lg;
+    border: 1px solid transparent;
+    border-radius: styleVar.$border-radius-sm;
+  }
+  .alert-danger {
+    color: darken(styleVar.$error-color, 10%);
+    background-color: lighten(styleVar.$error-color, 35%);
+    border-color: lighten(styleVar.$error-color, 25%);
+  }
+  .alert-success {
+    color: darken(styleVar.$success-color, 10%);
+    background-color: lighten(styleVar.$success-color, 35%);
+    border-color: lighten(styleVar.$success-color, 25%);
+  }
+
+
+  .branches-table-container {
+    background-color: styleVar.$bg-secondary;
+    padding: styleVar.$spacing-md;
+    border-radius: styleVar.$border-radius-md;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    overflow-x: auto; // For responsiveness
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+
+      th, td {
+        padding: styleVar.$spacing-sm styleVar.$spacing-md;
+        text-align: left;
+        border-bottom: 1px solid styleVar.$border-color;
+      }
+
+      th {
+        background-color: lighten(styleVar.$bg-secondary, 5%);
+        font-weight: bold;
+        color: styleVar.$text-primary;
+      }
+
+      td {
+        color: styleVar.$text-secondary;
+      }
+
+      tbody tr:hover {
+        background-color: lighten(styleVar.$bg-secondary, 3%);
+      }
+
+      // Actions column
+      td:last-child {
+        .btn {
+          margin-right: styleVar.$spacing-sm;
+          &:last-child {
+            margin-right: 0;
+          }
+        }
+      }
+    }
+  }
+
+  // Basic button styling (can be global)
+  // .btn {
+  //   padding: styleVar.$spacing-sm styleVar.$spacing-md;
+  //   border: none;
+  //   border-radius: styleVar.$border-radius-sm;
+  //   cursor: pointer;
+  //   font-weight: 500;
+  //   transition: background-color 0.2s ease, opacity 0.2s ease;
+
+  //   &:disabled {
+  //     opacity: 0.7;
+  //     cursor: not-allowed;
+  //   }
+  // }
+
+  // .btn-primary {
+  //   background-color: styleVar.$primary-color;
+  //   color: styleVar.$text-on-primary-bg;
+  //   &:hover:not(:disabled) { background-color: styleVar.$primary-color-dark; }
+  // }
+  // .btn-secondary {
+  //   background-color: styleVar.$neutral-medium;
+  //   color: styleVar.$neutral-lightest;
+  //   &:hover:not(:disabled) { background-color: styleVar.$neutral-medium-dark; }
+  // }
+  // .btn-danger {
+  //   background-color: styleVar.$error-color;
+  //   color: styleVar.$neutral-white;
+  //   &:hover:not(:disabled) { background-color: darken(styleVar.$error-color, 10%); }
+  // }
+  // .btn-sm {
+  //   padding: styleVar.$spacing-xs styleVar.$spacing-sm;
+  //   font-size: 0.875em;
+  // }
+
+  // .loading-message {
+  //   font-size: 1.2em;
+  //   text-align: center;
+  //   padding: styleVar.$spacing-xl;
+  // }
+}

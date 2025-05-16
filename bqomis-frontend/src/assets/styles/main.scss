@@ -1,0 +1,43 @@
+// Import variables first so they are available everywhere
+@use 'variables' as *; // Import your variables first
+
+// Import reset or normalize (optional, but recommended)
+@use 'reset'; // If you have a reset.scss
+// @use 'normalize'; // Or if you're using normalize.css as an SCSS import
+
+// Global base styles
+body {
+  margin: 0;
+  font-family: $font-family-sans-serif;
+  line-height: $line-height-base;
+  font-size: $font-size-base;
+  color: $text-primary;
+  background-color: $bg-primary; // Use variable for body background
+
+  // Improves font rendering
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// Basic link styling using variables
+a {
+  font-weight: 500;
+  color: $text-link;
+  text-decoration: none; // Typically, links don't have underlines by default in apps
+
+  &:hover {
+    color: $text-link-hover;
+    text-decoration: underline; // Add underline on hover for clarity
+  }
+}
+
+// You might have other global styles for headings, paragraphs, etc.
+h1, h2, h3, h4, h5, h6 {
+  color: $text-primary; // Or a specific heading color
+  margin-top: 0;
+  margin-bottom: $spacing-md * 0.5; // Example using spacing variable
+}
+
+// Import other global utility classes or base component styles if any
+// @import 'utilities';
+// @import 'base-components';

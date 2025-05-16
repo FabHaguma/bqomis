@@ -1,0 +1,20 @@
+@use '../../assets/styles/variables.scss' as styleVar;
+
+// Basic styling for AdminLayout
+.admin-layout {
+  background: styleVar.$neutral-lightest;
+  color: #000;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  border: 3px solid styleVar.$primary-color-dark;
+}
+
+.admin-layout__main{
+  display: flex;
+  align-items: stretch;
+}
+
+.admin-layout__content{
+  padding: styleVar.$spacing-xl;
+}

@@ -223,11 +223,22 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+# My Own Files - for AI Assistant
+# These files are used by the AI Assistant to store context and other information.
+# Additional files for project management and task tracking.
+# These files are not meant to be shared or version controlled.
 Todo.txt
 unrelated.json
 project_template.json
-project_template_2.json
-project_template_3.json
 
+general_context.json
+general_context.txt
 
+local_context.json
+local_context.txt
+
+proj_gen_cont.txt
+proj_gen_cont.json
+proj_gen_plan.md
 
