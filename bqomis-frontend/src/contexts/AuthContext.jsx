@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
+import { getUserById } from '../api/userService';
 
 const AuthContext = createContext(null);
 
@@ -90,6 +91,22 @@ export const AuthProvider = ({ children }) => {
     console.log('User logged out');
   };
 
+  const refreshUserContext = async () => {
+    if (user && user.id && token) { // Only if there's a current user and token
+      try {
+        const updatedUserData = await getUserById(user.id, token); // Fetch fresh user data
+        setUser(updatedUserData);
+        localStorage.setItem('bqomis_user', JSON.stringify(updatedUserData)); // Update localStorage
+      } catch (error) {
+        console.error("Failed to refresh user context:", error);
+        // Optionally handle error, e.g., logout if token is invalid
+        if (error.message.includes("401") || error.message.includes("403")) {
+            logout(); // Example: log out on auth error
+        }
+      }
+    }
+  };
+
   // Include token in the value object
   const value = {
     user,
@@ -99,6 +116,7 @@ export const AuthProvider = ({ children }) => {
     isClient: user?.role === 'CLIENT',
     login,
     logout,
+    refreshUserContext, // Expose the refresh function
     loading, // expose loading state for initial auth check
   };
 
@@ -113,3 +131,4 @@ export const useAuth = () => {
   }
   return context;
 };
+

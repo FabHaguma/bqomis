@@ -1,0 +1,128 @@
+@use '../../assets/styles/variables.scss' as styleVar;
+@use '../../assets/styles/buttonStyles.scss';
+
+.client-home-page {
+  padding: styleVar.$spacing-lg;
+
+  .home-header {
+    text-align: center;
+    margin-bottom: styleVar.$spacing-xl * 1.5;
+    padding: styleVar.$spacing-lg;
+    background-color: lighten(styleVar.$bg-secondary, 3%);
+    border-radius: styleVar.$border-radius-md;
+
+    h1 {
+      font-size: 2em;
+      color: styleVar.$text-primary;
+      margin-bottom: styleVar.$spacing-sm;
+    }
+    p {
+      font-size: 1.1em;
+      color: styleVar.$text-secondary;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+  }
+
+  .upcoming-appointment-section,
+  .quick-actions-section {
+    margin-bottom: styleVar.$spacing-xl * 1.5;
+
+    h2 {
+      font-size: 1.6em;
+      color: styleVar.$text-primary;
+      margin-bottom: styleVar.$spacing-lg;
+      border-bottom: 1px solid styleVar.$border-color;
+      padding-bottom: styleVar.$spacing-sm;
+    }
+  }
+  
+  .loading-text, .error-text {
+    font-style: italic;
+    color: styleVar.$text-muted;
+  }
+  .error-text {
+      color: styleVar.$error-color;
+  }
+
+  .appointment-summary-card {
+    background-color: styleVar.$bg-secondary;
+    padding: styleVar.$spacing-xl;
+    border-radius: styleVar.$border-radius-md;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    border-left: 5px solid styleVar.$primary-color;
+
+    h3 {
+      font-size: 1.4em;
+      color: styleVar.$primary-color-light;
+      margin: 0 0 styleVar.$spacing-md 0;
+    }
+    p {
+      margin: styleVar.$spacing-sm 0;
+      color: styleVar.$text-secondary;
+      font-size: 1em;
+      strong {
+        color: styleVar.$text-primary;
+      }
+    }
+    .status-badge { // Assuming global status badge styles from My Appointments page
+        font-size: 0.85em;
+        padding: styleVar.$spacing-xs (styleVar.$spacing-xs * 2);
+        border-radius: styleVar.$border-radius-sm * 5;
+        font-weight: bold;
+        text-transform: uppercase;
+        background-color: styleVar.$neutral-medium-dark;
+        color: styleVar.$neutral-lightest;
+
+        &.status-scheduled { background-color: styleVar.$primary-color; color: styleVar.$text-on-primary-bg; }
+        &.status-active { background-color: styleVar.$success-color; color: styleVar.$neutral-white; }
+        // Add other statuses if needed
+    }
+    .btn-view-all { // Assuming global .btn .btn-secondary
+      margin-top: styleVar.$spacing-lg;
+      display: inline-block; // To fit content
+    }
+  }
+
+  .quick-actions-section {
+    .actions-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: styleVar.$spacing-lg;
+    }
+
+    .action-card {
+      background-color: styleVar.$bg-secondary;
+      padding: styleVar.$spacing-lg;
+      border-radius: styleVar.$border-radius-md;
+      text-align: center;
+      text-decoration: none;
+      color: styleVar.$text-primary;
+      transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+
+
+      &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 4px 10px rgba(styleVar.$primary-color, 0.2);
+      }
+
+      .action-icon {
+        font-size: 2.5em; // Emoji size
+        display: block;
+        margin-bottom: styleVar.$spacing-md;
+      }
+
+      h3 {
+        font-size: 1.2em;
+        margin-bottom: styleVar.$spacing-sm;
+        color: styleVar.$primary-color-light;
+      }
+      p {
+        font-size: 0.9em;
+        color: styleVar.$text-secondary;
+        line-height: 1.4;
+      }
+    }
+  }
+}

@@ -11,7 +11,6 @@ const ClientLayout = () => {
     { path: '/client/home', label: 'Home', icon: '🏠' },
     { path: '/client/branches', label: 'Find Branch & Services', icon: '🏢' },
     { path: '/client/appointments', label: 'My Appointments', icon: '📅' },
-    { path: '/client/history', label: 'My History', icon: '🛠️' },
     { path: '/client/profile', label: 'My Profile', icon: '👤' },
   ];
   

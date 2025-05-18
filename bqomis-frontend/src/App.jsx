@@ -17,9 +17,8 @@ import AdminBranchServiceManagementPage from './pages/admin/AdminBranchServiceMa
 import ClientHomePage from './pages/client/ClientHomePage';
 import ClientFindBranchPage from './pages/client/ClientFindBranchPage';
 import ClientBookAppointmentPage from './pages/client/ClientBookAppointmentPage';
-// import ClientMyAppointmentsPage from './pages/client/ClientMyAppointmentsPage';
-// import ClientHistoryPage from './pages/client/ClientHistoryPage';
-// import ClientProfilePage from './pages/client/ClientProfilePage';
+import ClientMyAppointmentsPage from './pages/client/ClientMyAppointmentsPage';
+import ClientProfilePage from './pages/client/ClientProfilePage';
 
 // pages shared between client and admin
 import SignInPage from './pages/SignInPage';
@@ -83,9 +82,8 @@ function App() {
           <Route path="home" element={<ClientHomePage />} />
           <Route path="branches" element={<ClientFindBranchPage />} />
           <Route path="book-appointment" element={<ClientBookAppointmentPage />} />
-          {/* <Route path="appointments" element={<ClientMyAppointmentsPage />} />
-          <Route path="history" element={<ClientHistoryPage />} />
-          <Route path="profile" element={<ClientProfilePage />} /> */}
+          <Route path="appointments" element={<ClientMyAppointmentsPage />} />
+          <Route path="profile" element={<ClientProfilePage />} />
         </Route>
       </Route>
 

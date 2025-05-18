@@ -1,0 +1,133 @@
+@use '../../assets/styles/variables.scss' as styleVar;
+@use '../../assets/styles/buttonStyles.scss';
+
+.client-profile-page {
+  padding: styleVar.$spacing-lg;
+  max-width: 700px;
+  margin: 0 auto;
+
+  .page-header {
+    margin-bottom: styleVar.$spacing-lg;
+    text-align: center;
+    h1 { font-size: 1.8em; color: styleVar.$neutral-darkest; }
+  }
+
+  .loading-message, .error-message, .success-message { /* ... standard alert/message styling ... */ }
+  .error-message.alert.alert-danger { /* ... */ }
+  .success-message.alert.alert-success { /* ... */ }
+
+
+  .profile-section {
+    background-color: styleVar.$bg-secondary;
+    padding: styleVar.$spacing-xl;
+    border-radius: styleVar.$border-radius-md;
+    margin-bottom: styleVar.$spacing-xl;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+
+    h2 {
+      font-size: 1.4em;
+      color: styleVar.$text-primary;
+      margin-top: 0;
+      margin-bottom: styleVar.$spacing-lg;
+      border-bottom: 1px solid styleVar.$border-color;
+      padding-bottom: styleVar.$spacing-sm;
+    }
+  }
+
+  .profile-info-section {
+    .profile-picture-placeholder {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background-color: styleVar.$primary-color;
+      color: styleVar.$text-on-primary-bg;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3em;
+      font-weight: bold;
+      margin: 0 auto styleVar.$spacing-lg auto;
+      // TODO: Add styles for actual image if implemented
+    }
+
+    .form-group {
+      margin-bottom: styleVar.$spacing-lg * 0.8;
+      label {
+        display: block;
+        font-weight: 500;
+        color: styleVar.$text-secondary;
+        margin-bottom: styleVar.$spacing-xs;
+      }
+      input {
+        width: 100%;
+        padding: styleVar.$spacing-sm styleVar.$spacing-md;
+        border: 1px solid styleVar.$border-color;
+        border-radius: styleVar.$border-radius-sm;
+        background-color: styleVar.$bg-tertiary;
+        color: styleVar.$text-primary;
+        font-size: 1em;
+        box-sizing: border-box;
+
+        &:disabled:not([readonly]) { // For edit mode toggle, not for purely readonly fields
+          background-color: lighten(styleVar.$bg-tertiary, 2%);
+          opacity: 0.8;
+        }
+        &:read-only { // For fields like email, role
+            background-color: darken(styleVar.$bg-tertiary, 3%);
+            color: styleVar.$text-muted;
+            cursor: default;
+        }
+      }
+    }
+    .form-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: styleVar.$spacing-md;
+      margin-top: styleVar.$spacing-lg;
+    }
+  }
+
+  .security-section {
+    display: flex;
+    flex-direction: column;
+    gap: styleVar.$spacing-md;
+    
+    .btn { width: 100%; }
+    @media (min-width: 500px) {
+        flex-direction: row;
+        .btn { width: auto; flex-grow: 1; }
+    }
+    .btn-delete-account { /* Relies on global .btn-danger */ }
+  }
+  
+  .quick-links-section {
+    ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        li {
+            margin-bottom: styleVar.$spacing-sm;
+            a {
+                color: styleVar.$text-link;
+                text-decoration: underline;
+                &:hover { color: styleVar.$text-link-hover; }
+            }
+        }
+    }
+  }
+
+  // Styles for forms within Modals (e.g., password change)
+  .password-change-form {
+    .form-group { /* Similar to profile form-group */
+        margin-bottom: styleVar.$spacing-lg * 0.8;
+        label { display: block; font-weight: 500; margin-bottom: styleVar.$spacing-xs; }
+        input { width: 100%; padding: styleVar.$spacing-sm styleVar.$spacing-md; /* ... */ box-sizing: border-box; }
+    }
+    .error-message, .success-message { margin-bottom: styleVar.$spacing-md; }
+    .form-actions { /* Similar to profile form-actions */ 
+        display: flex; justify-content: flex-end; gap: styleVar.$spacing-md; margin-top: styleVar.$spacing-lg;
+    }
+  }
+}
+
+// Assume global .btn, .btn-primary, .btn-secondary, .btn-danger styles are defined

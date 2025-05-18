@@ -95,4 +95,10 @@ public class AppointmentController {
         return ResponseEntity.ok(appointments);
     }
 
+    @GetMapping("/user/{userId}")
+    public ResponseEntity<List<AppointmentDTO>> getAppointmentsByUserId(@PathVariable Long userId) {
+        List<AppointmentDTO> appointmentDTOs = appointmentService.findAppointmentsByUserId(userId);
+        return ResponseEntity.ok(appointmentDTOs);
+    }
+
 }

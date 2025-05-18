@@ -1,0 +1,103 @@
+@use '../../assets/styles/variables.scss' as styleVar;
+@use '../../assets/styles/buttonStyles.scss';
+
+.client-my-appointments-page {
+  padding: styleVar.$spacing-lg;
+  max-width: 800px;
+  margin: 0 auto;
+
+  .page-header {
+    margin-bottom: styleVar.$spacing-lg;
+    text-align: center;
+    h1 {
+      font-size: 1.8em;
+      color: styleVar.$text-primary;
+      color: styleVar.$neutral-darkest;
+    }
+  }
+
+  .loading-message { /* ... as before ... */ }
+  .error-message.alert.alert-danger { /* ... as before ... */ }
+
+  .appointments-section {
+    margin-bottom: styleVar.$spacing-xl;
+
+    h2 {
+      font-size: 1.5em;
+      color: styleVar.$neutral-darkest;
+      margin-bottom: styleVar.$spacing-lg;
+      border-bottom: 1px solid styleVar.$border-color;
+      padding-bottom: styleVar.$spacing-sm;
+    }
+
+    .appointments-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: styleVar.$spacing-lg;
+    }
+
+    .appointment-card {
+      background-color: styleVar.$bg-secondary;
+      padding: styleVar.$spacing-lg;
+      border-radius: styleVar.$border-radius-md;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      border-left: 5px solid styleVar.$neutral-medium; // Default border
+
+      // Status-specific left border colors
+      &.status-scheduled { border-left-color: styleVar.$primary-color; }
+      &.status-active { border-left-color: styleVar.$success-color; } // If you use 'ACTIVE'
+      &.status-completed { border-left-color: styleVar.$success-color; }
+      &.status-cancelled { border-left-color: styleVar.$error-color; }
+      // Add more statuses as needed
+
+      .card-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: styleVar.$spacing-sm;
+      }
+      
+      h3 {
+        font-size: 1.2em;
+        color: styleVar.$text-primary;
+        margin: 0;
+      }
+
+      p {
+        margin: styleVar.$spacing-xs * 1.5 0;
+        color: styleVar.$text-secondary;
+        font-size: 0.95em;
+        strong {
+          color: styleVar.$text-primary;
+        }
+      }
+
+      .status-badge {
+        font-size: 0.8em;
+        padding: styleVar.$spacing-xs (styleVar.$spacing-xs * 2);
+        border-radius: styleVar.$border-radius-sm * 5; // Pill shape
+        font-weight: bold;
+        text-transform: uppercase;
+        background-color: styleVar.$neutral-medium-dark;
+        color: styleVar.$neutral-lightest;
+
+        &.status-scheduled { background-color: styleVar.$primary-color; color: styleVar.$text-on-primary-bg; }
+        &.status-active { background-color: styleVar.$success-color; color: styleVar.$neutral-white; }
+        &.status-completed { background-color: styleVar.$success-color; color: styleVar.$neutral-white; }
+        &.status-cancelled { background-color: styleVar.$error-color; color: styleVar.$neutral-white; }
+      }
+
+      .btn-cancel { // Assuming global .btn, .btn-danger, .btn-sm styles
+        margin-top: styleVar.$spacing-md;
+        width: 100%;
+      }
+    }
+     p:empty { // When no appointments
+        font-style: italic;
+        color: styleVar.$text-muted;
+     }
+  }
+}

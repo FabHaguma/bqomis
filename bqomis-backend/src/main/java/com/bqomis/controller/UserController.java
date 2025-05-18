@@ -38,6 +38,17 @@ public class UserController {
         return ResponseEntity.ok(userService.save(user));
     }
 
+    @PostMapping("/change-password")
+    public ResponseEntity<String> changePassword(@RequestParam String email, @RequestParam String oldPassword,
+            @RequestParam String newPassword) {
+        boolean changed = userService.changePassword(email, oldPassword, newPassword);
+        if (changed) {
+            return ResponseEntity.ok("Password changed successfully");
+        } else {
+            return ResponseEntity.badRequest().body("Invalid email or password");
+        }
+    }
+
     @DeleteMapping("/{id}")
     public void deleteUser(@PathVariable Long id) {
         userService.deleteById(id);

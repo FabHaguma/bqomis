@@ -58,6 +58,19 @@ public class UserService {
         return mapperUtil.toUserDTO(user); // Authentication successful
     }
 
+    public boolean changePassword(String email, String oldPassword, String newPassword) {
+        User user = userRepository.findByEmail(email);
+        if (user == null) {
+            return false;
+        }
+        if (!passwordEncoder.matches(oldPassword, user.getPassword())) {
+            return false;
+        }
+        user.setPassword(hashPassword(newPassword));
+        userRepository.save(user);
+        return true;
+    }
+
     private String hashPassword(String password) {
         return passwordEncoder.encode(password);
     }

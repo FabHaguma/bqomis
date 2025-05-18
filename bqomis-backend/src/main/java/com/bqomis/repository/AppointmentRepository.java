@@ -12,19 +12,22 @@ import java.util.List;
 
 @Repository
 public interface AppointmentRepository extends JpaRepository<Appointment, Long> {
-    // Additional query methods can be defined here if needed
+        // Additional query methods can be defined here if needed
 
-    @Query("SELECT a FROM Appointment a WHERE a.date = :anyDate AND a.branchServiceId IN :branchServiceIds")
-    List<Appointment> findAppointmentsByDateAndBranchServiceIds(
-            @Param("anyDate") LocalDate anyDate,
-            @Param("branchServiceIds") List<Long> branchServiceIds);
+        @Query("SELECT a FROM Appointment a WHERE a.date = :anyDate AND a.branchServiceId IN :branchServiceIds")
+        List<Appointment> findAppointmentsByDateAndBranchServiceIds(
+                        @Param("anyDate") LocalDate anyDate,
+                        @Param("branchServiceIds") List<Long> branchServiceIds);
 
-    @Query("SELECT a FROM Appointment a WHERE a.date = :anyDate")
-    List<Appointment> findAppointmentsByDate(@Param("anyDate") LocalDate anyDate);
+        @Query("SELECT a FROM Appointment a WHERE a.date = :anyDate")
+        List<Appointment> findAppointmentsByDate(@Param("anyDate") LocalDate anyDate);
 
-    @Query("SELECT a FROM Appointment a WHERE a.date = :anyDate AND a.branchServiceId = :branchServiceId")
-    List<Appointment> findAppointmentsByDateAndBranchServiceId(
-            @Param("anyDate") LocalDate anyDate,
-            @Param("branchServiceId") Long branchServiceId);
+        @Query("SELECT a FROM Appointment a WHERE a.date = :anyDate AND a.branchServiceId = :branchServiceId")
+        List<Appointment> findAppointmentsByDateAndBranchServiceId(
+                        @Param("anyDate") LocalDate anyDate,
+                        @Param("branchServiceId") Long branchServiceId);
+
+        @Query("SELECT a FROM Appointment a WHERE a.userId = :userId")
+        List<Appointment> findAppointmentsByUserId(@Param("userId") Long userId);
 
 }

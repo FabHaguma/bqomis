@@ -2,6 +2,7 @@ package com.bqomis.util;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -88,10 +89,23 @@ public class MapperUtil {
         appointmentDTO.setId(appointment.getId());
         appointmentDTO.setUserId(appointment.getUserId());
         appointmentDTO.setBranchServiceId(appointment.getBranchServiceId());
+        Long[] branchIdAndServiceId = lookupUtil
+                .getBranchIdAndServiceIdByBranchServiceId(appointment.getBranchServiceId());
+        appointmentDTO.setBranchId(branchIdAndServiceId[0]);
+        appointmentDTO.setBranchName(lookupUtil.getBranchNameById(branchIdAndServiceId[0]));
+        appointmentDTO.setServiceId(branchIdAndServiceId[1]);
+        appointmentDTO.setServiceName(lookupUtil.getServiceNameById(branchIdAndServiceId[1]));
         appointmentDTO.setDate(appointment.getDate().toString());
         appointmentDTO.setTime(appointment.getTime().toString());
         appointmentDTO.setStatus(appointment.getStatus());
         return appointmentDTO;
+    }
+
+    public List<AppointmentDTO> toAppointmentDTOList(List<Appointment> appointments) {
+        if (appointments == null) {
+            return null;
+        }
+        return appointments.stream().map(this::toAppointmentDTO).toList();
     }
 
     public Appointment toAppointment(AppointmentDTO appointmentDTO) {

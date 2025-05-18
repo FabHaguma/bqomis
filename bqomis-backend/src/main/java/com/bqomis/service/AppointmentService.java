@@ -73,4 +73,9 @@ public class AppointmentService {
         List<Long> branchServiceIds = lookupUtil.getBranchServiceIdsByBranchId(branchId);
         return appointmentRepository.findAppointmentsByDateAndBranchServiceIds(date, branchServiceIds);
     }
+
+    public List<AppointmentDTO> findAppointmentsByUserId(Long userId) {
+        List<Appointment> appointments = appointmentRepository.findAppointmentsByUserId(userId);
+        return mapperUtil.toAppointmentDTOList(appointments);
+    }
 }

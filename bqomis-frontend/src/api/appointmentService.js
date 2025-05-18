@@ -61,3 +61,31 @@ export const getAppointmentsByDateAndBranchService = async (date, branchServiceI
   });
   return handleResponse(response); // Returns array of appointments
 };
+
+
+// If you want to implement cancellation:
+export const deleteAppointment = async (appointmentId, token) => {
+  const headers = {};
+  if (token) { headers['Authorization'] = `Bearer ${token}`; }
+
+  const response = await fetch(`${API_BASE_URL}/appointments/${appointmentId}`, {
+    method: 'DELETE',
+    headers: headers,
+  });
+  return handleResponse(response); // Expects 204 No Content on success
+};
+
+// GET /api/appointments/user/{userId}
+// This endpoint is for fetching all appointments for a specific user
+export const getAppointmentsByUserId = async (userId, token) => {
+  const headers = { 'Content-Type': 'application/json' };
+  if (token) { headers['Authorization'] = `Bearer ${token}`; }
+
+  const response = await fetch(`${API_BASE_URL}/appointments/user/${userId}`, {
+    method: 'GET',
+    headers: headers,
+  });
+  return handleResponse(response); // Returns array of appointments for this user
+};
+
+// deleteAppointment remains the same

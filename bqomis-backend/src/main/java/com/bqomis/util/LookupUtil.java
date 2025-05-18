@@ -251,4 +251,17 @@ public class LookupUtil {
         return branchServiceIds;
     }
 
+    public Long[] getBranchIdAndServiceIdByBranchServiceId(Long branchServiceId) {
+        Long[] ids = new Long[2];
+        for (Map.Entry<String, Long> entry : branchServiceIdByStringOfIds.entrySet()) {
+            if (entry.getValue().equals(branchServiceId)) {
+                String[] parts = entry.getKey().split("-");
+                ids[0] = Long.parseLong(parts[0]); // branchId
+                ids[1] = Long.parseLong(parts[1]); // serviceId
+                break;
+            }
+        }
+        return ids;
+    }
+
 }
