@@ -1,0 +1,61 @@
+version: '3.8'
+
+services:
+  # Backend Spring Boot service
+  backend:
+    build:
+      context: ./bqomis-backend
+      dockerfile: Dockerfile
+    container_name: bqomis-backend
+    environment:
+      - SPRING_PROFILES_ACTIVE=production
+      - DB_USERNAME=${DB_USERNAME}
+      - DB_PASSWORD=${DB_PASSWORD}
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/bqomis_db
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - app_network
+    restart: unless-stopped
+
+  # Frontend React/Nginx service
+  frontend:
+    build:
+      context: ./bqomis-frontend
+      dockerfile: Dockerfile
+    container_name: bqomis-frontend
+    depends_on:
+      - backend
+    networks:
+      - app_network
+      - caddy_network
+    restart: unless-stopped
+
+  # PostgreSQL database
+  postgres:
+    image: postgres:15-alpine
+    container_name: bqomis-postgres
+    environment:
+      - POSTGRES_DB=bqomis_db
+      - POSTGRES_USER=${DB_USERNAME}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - app_network
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+    driver: local
+
+networks:
+  # Internal network for app communication
+  app_network:
+    driver: bridge
+    internal: false
+  
+  # External network for Caddy reverse proxy
+  caddy_network:
+    external: true
