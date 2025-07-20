@@ -1,0 +1,102 @@
+@use "sass:color";
+@use "sass:math";
+@use '../../assets/styles/variables.scss' as styleVar;
+@use '../../assets/styles/buttonStyles.scss';
+
+.admin-dashboard-page {
+  padding: styleVar.$spacing-lg;
+
+  .page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: styleVar.$spacing-lg;
+
+    h1 {
+      margin: 0;
+      font-size: 2em;
+      color: styleVar.$neutral-darkest;
+    }
+  }
+  .error-message, .loading-message {
+    font-size: 1.2em;
+    text-align: center;
+    padding: styleVar.$spacing-xl;
+  }
+  .error-message.alert.alert-danger {
+    padding: styleVar.$spacing-md;
+    margin-bottom: styleVar.$spacing-lg;
+    border: 1px solid transparent;
+    border-radius: styleVar.$border-radius-sm;
+    color: color.adjust(styleVar.$error-color, $lightness: -10%);
+    background-color: color.adjust(styleVar.$error-color, $lightness: 35%);
+    border-color: color.adjust(styleVar.$error-color, $lightness: 25%);
+  }
+
+  .filters-area {
+    margin-bottom: styleVar.$spacing-xl;
+    padding: styleVar.$spacing-md;
+    background-color: color.adjust(styleVar.$bg-secondary, $lightness: 2%);
+    border-radius: styleVar.$border-radius-sm;
+    display: flex;
+    gap: styleVar.$spacing-md;
+    align-items: center;
+    flex-wrap: wrap;
+
+    label {
+      font-weight: 500;
+    }
+    select {
+      padding: styleVar.$spacing-xs styleVar.$spacing-sm;
+      // ... other select styles
+    }
+  }
+
+  .dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); // Responsive grid
+    gap: styleVar.$spacing-lg;
+  }
+
+  .chart-card {
+    background-color: styleVar.$bg-secondary;
+    padding: styleVar.$spacing-lg;
+    border-radius: styleVar.$border-radius-md;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+
+    h3 {
+      font-size: 1.3em;
+      color: styleVar.$text-primary;
+      margin-top: 0;
+      margin-bottom: styleVar.$spacing-sm;
+    }
+    h4 { // For sub-titles like branch name in card
+        font-size: 1.1em;
+        color: styleVar.$text-secondary;
+        margin-bottom: styleVar.$spacing-md;
+    }
+    select { // For inline filters within cards
+        margin-bottom: styleVar.$spacing-md;
+        margin-right: styleVar.$spacing-sm;
+        padding: styleVar.$spacing-xs styleVar.$spacing-sm;
+    }
+    p { // For "No data" messages
+        font-style: italic;
+        color: styleVar.$text-muted;
+    }
+
+    // Recharts specific overrides if needed (often good out of the box for dark themes if text colors are set)
+    .recharts-cartesian-axis-tick-value tspan {
+        fill: styleVar.$text-secondary; // Ensure axis labels are visible
+    }
+    .recharts-legend-item-text {
+        color: styleVar.$text-secondary !important; // Legend text
+    }
+    .recharts-tooltip-label {
+        color: styleVar.$text-primary !important; // Tooltip title
+    }
+     .recharts-label {
+        fill: styleVar.$text-secondary; // For Pie chart labels
+    }
+  }
+}

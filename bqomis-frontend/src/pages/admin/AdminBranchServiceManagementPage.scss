@@ -1,3 +1,5 @@
+@use "sass:color";
+@use "sass:math";
 @use '../../assets/styles/variables.scss' as styleVar;
 @use '../../assets/styles/buttonStyles.scss';
 
@@ -18,9 +20,9 @@
     margin-bottom: styleVar.$spacing-lg;
     border: 1px solid transparent;
     border-radius: styleVar.$border-radius-sm;
-    color: darken(styleVar.$error-color, 10%);
-    background-color: lighten(styleVar.$error-color, 35%);
-    border-color: lighten(styleVar.$error-color, 25%);
+    color: color.adjust(styleVar.$error-color, $lightness: -10%);
+    background-color: color.adjust(styleVar.$error-color, $lightness: 35%);
+    border-color: color.adjust(styleVar.$error-color, $lightness: 25%);
   }
 
   .branch-selector-container {
@@ -97,7 +99,7 @@
         justify-content: space-between;
         align-items: center;
         padding: styleVar.$spacing-sm 0;
-        border-bottom: 1px solid lighten(styleVar.$border-color, 5%);
+        border-bottom: 1px solid color.adjust(styleVar.$border-color, $lightness: 5%);
 
         &:last-child {
           border-bottom: none;

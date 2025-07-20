@@ -1,12 +1,17 @@
 -- Insert initial roles
-INSERT INTO roles (name, description) VALUES
-('ADMIN', 'Administrator with full access'),
-('STAFF', 'Staff member with limited access'),
-('CLIENT', 'Client with restricted access')
-ON CONFLICT (name) DO NOTHING;
+INSERT INTO roles (name, description) 
+SELECT 'ADMIN', 'Administrator with full access'
+WHERE NOT EXISTS (SELECT 1 FROM roles WHERE name = 'ADMIN')
+UNION ALL
+SELECT 'STAFF', 'Staff member with limited access'
+WHERE NOT EXISTS (SELECT 1 FROM roles WHERE name = 'STAFF')
+UNION ALL
+SELECT 'CLIENT', 'Client with restricted access'
+WHERE NOT EXISTS (SELECT 1 FROM roles WHERE name = 'CLIENT');
 
 -- Insert initial districts
-INSERT INTO districts (name, province) VALUES
+INSERT INTO districts (name, province)
+SELECT * FROM (VALUES
 ('Gasabo', 'Kigali'),
 ('Kicukiro', 'Kigali'),
 ('Nyarugenge', 'Kigali'),
@@ -37,10 +42,12 @@ INSERT INTO districts (name, province) VALUES
 ('Rubavu', 'West'),
 ('Rusizi', 'West'),
 ('Rutsiro', 'West')
-ON CONFLICT (name) DO NOTHING;
+) AS new_districts(name, province)
+WHERE NOT EXISTS (SELECT 1 FROM districts WHERE districts.name = new_districts.name);
 
 -- Insert initial branches
-INSERT INTO branches (name, address, district, province) VALUES
+INSERT INTO branches (name, address, district, province)
+SELECT * FROM (VALUES
 ('BK - Main Branch', 'Chic Building', 'Nyarugenge', 'Kigali'),
 ('BK - Magerwa Branch', 'Gatenga Sector', 'Gasabo', 'Kigali'),
 ('BK - Remera Branch', 'Opposite Remera Taxi Park', 'Gasabo', 'Kigali'),
@@ -59,10 +66,12 @@ INSERT INTO branches (name, address, district, province) VALUES
 ('BK - Nyamasheke Branch', 'Nyamasheke', 'Nyamasheke', 'Western'),
 ('BK - Karongi Branch', 'BP 175 Karongi', 'Karongi', 'Western'),
 ('BK - Rubavu Branch', 'Ruhengeri-Gisenyi Road', 'Rubavu', 'Western')
-ON CONFLICT (name) DO NOTHING;
+) AS new_branches(name, address, district, province)
+WHERE NOT EXISTS (SELECT 1 FROM branches WHERE branches.name = new_branches.name);
 
 -- Insert initial services
-INSERT INTO services (name, description) VALUES
+INSERT INTO services (name, description)
+SELECT * FROM (VALUES
 ('Withdraw', 'Service to withdraw money from your account'),
 ('Deposit', 'Service to deposit money into your account'),
 ('Check Book', 'Service to request a new check book'),
@@ -75,4 +84,5 @@ INSERT INTO services (name, description) VALUES
 ('Money Transfer', 'Service to transfer money to another account'),
 ('Fixed Deposit', 'Service to create a fixed deposit account'),
 ('Investment Services', 'Service to explore and manage investment options')
-ON CONFLICT (name) DO NOTHING;
+) AS new_services(name, description)
+WHERE NOT EXISTS (SELECT 1 FROM services WHERE services.name = new_services.name);

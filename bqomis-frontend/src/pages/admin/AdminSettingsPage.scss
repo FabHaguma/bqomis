@@ -1,0 +1,120 @@
+@use "sass:color";
+@use "sass:math";
+@use '../../assets/styles/variables.scss' as styleVar;
+@use '../../assets/styles/buttonStyles.scss';
+
+
+.admin-settings-page {
+  padding: styleVar.$spacing-lg;
+  max-width: 900px;
+  margin: 0 auto;
+
+  .page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: styleVar.$spacing-lg;
+    h1 {
+      margin: 0;
+      font-size: 2em;
+      color: styleVar.$neutral-darkest;
+    }
+  }
+
+  .loading-message, .error-message, .success-message {
+    font-size: 1.1em;
+    text-align: center;
+    padding: styleVar.$spacing-md;
+    margin-bottom: styleVar.$spacing-lg;
+    border-radius: styleVar.$border-radius-sm;
+  }
+
+  .error-message {
+    color: color.adjust(styleVar.$error-color, $lightness: -10%);
+    background-color: color.adjust(styleVar.$error-color, $lightness: 35%);
+    border: 1px solid color.adjust(styleVar.$error-color, $lightness: 25%);
+  }
+
+  .success-message {
+    color: color.adjust(styleVar.$success-color, $lightness: -10%);
+    background-color: color.adjust(styleVar.$success-color, $lightness: 35%);
+    border: 1px solid color.adjust(styleVar.$success-color, $lightness: 25%);
+  }
+
+  .loading-message {
+    color: styleVar.$text-muted;
+    background-color: color.adjust(styleVar.$bg-secondary, $lightness: 5%);
+    border: 1px solid styleVar.$border-color;
+  }
+
+  .settings-section {
+    background-color: styleVar.$bg-secondary;
+    padding: styleVar.$spacing-xl;
+    border-radius: styleVar.$border-radius-md;
+    margin-bottom: styleVar.$spacing-xl;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+
+    h2 {
+      font-size: 1.4em;
+      color: styleVar.$text-primary;
+      margin-top: 0;
+      margin-bottom: styleVar.$spacing-lg;
+      border-bottom: 1px solid styleVar.$border-color;
+      padding-bottom: styleVar.$spacing-sm;
+    }
+
+    form {
+      .form-group {
+        margin-bottom: math.div(styleVar.$spacing-lg, 1.1111111111); // Updated division to math.div for 0.9 multiplier
+        label {
+          display: block;
+          font-weight: 500;
+          color: styleVar.$text-secondary;
+          margin-bottom: math.div(styleVar.$spacing-xs, 1.5); // Updated division to math.div
+        }
+        input[type="text"], input[type="number"], input[type="email"], select {
+          width: 100%;
+          padding: styleVar.$spacing-sm styleVar.$spacing-md;
+          border: 1px solid styleVar.$border-color;
+          border-radius: styleVar.$border-radius-sm;
+          background-color: styleVar.$bg-tertiary;
+          color: styleVar.$text-primary;
+          font-size: 1em;
+          box-sizing: border-box;
+          &:disabled { background-color: color.adjust(styleVar.$bg-tertiary, $lightness: 2%); opacity: 0.8; }
+        }
+        input[type="checkbox"] {
+            margin-right: styleVar.$spacing-sm;
+            vertical-align: middle;
+            width: auto;
+        }
+      }
+      .form-group-checkbox label {
+        display: inline-block;
+      }
+      
+      .info-text {
+        font-style: italic;
+        color: styleVar.$text-muted;
+        margin-bottom: styleVar.$spacing-md;
+        font-size: 0.9em;
+      }
+      
+      .btn-primary {
+        margin-top: styleVar.$spacing-md;
+      }
+    }
+  }
+
+  .branch-settings {
+    #branch-select-settings {
+      margin-bottom: styleVar.$spacing-lg;
+      width: 50%;
+      min-width: 250px;
+    }
+    .loading-text {
+      font-style: italic;
+      color: styleVar.$text-muted;
+    }
+  }
+}

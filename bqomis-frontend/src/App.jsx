@@ -8,10 +8,10 @@ import AdminDashboardPage from './pages/admin/AdminDashboardPage'; // Assuming y
 import AdminBranchManagementPage from './pages/admin/AdminBranchManagementPage';
 import AdminServiceManagementPage from './pages/admin/AdminServiceManagementPage';
 import AdminBranchServiceManagementPage from './pages/admin/AdminBranchServiceManagementPage';
-// import AdminUserManagementPage from './pages/admin/AdminUserManagementPage';
-// import AdminAppointmentManagementPage from './pages/admin/AdminAppointmentManagementPage';
-// import AdminAnalyticsPage from './pages/admin/AdminAnalyticsPage';
-// import AdminSettingsPage from './pages/admin/AdminSettingsPage';
+import AdminUserManagementPage from './pages/admin/AdminUserManagementPage';
+import AdminAppointmentManagementPage from './pages/admin/AdminAppointmentManagementPage';
+import AdminSettingsPage from './pages/admin/AdminSettingsPage';
+import DevDataToolsPage from './pages/admin/DevDataToolsPage';
 
 
 import ClientHomePage from './pages/client/ClientHomePage';
@@ -23,7 +23,7 @@ import ClientProfilePage from './pages/client/ClientProfilePage';
 // pages shared between client and admin
 import SignInPage from './pages/SignInPage';
 import NotFoundPage from './pages/NotFoundPage';
-// import SignUpPage from './pages/SignUpPage';
+import SignUpPage from './pages/SignUpPage';
 
 
 // Protected Route Component for Admin
@@ -72,7 +72,7 @@ function App() {
       {/* Public Routes */}
       <Route path="/" element={<Navigate to="/signin" replace />} />
       <Route path="/signin" element={!user ? <SignInPage /> : (user.role === 'ADMIN' ? <Navigate to="/admin/dashboard" replace /> : <Navigate to="/client/home" replace />)} />
-      {/* <Route path="/signup" element={<SignUpPage />} /> */}
+      <Route path="/signup" element={!user ? <SignUpPage /> : <Navigate to="/client/home" replace />} />
       {/* <Route path="/about" element={<AboutPage />} /> */}
 
       {/* Client Routes */}
@@ -96,10 +96,10 @@ function App() {
           <Route path="branches" element={<AdminBranchManagementPage />} />
           <Route path="services" element={<AdminServiceManagementPage />} />
           <Route path="branch-services" element={<AdminBranchServiceManagementPage />} />
-          {/* <Route path="users" element={<AdminUserManagementPage />} /> */}
-          {/* <Route path="appointments" element={<AdminAppointmentManagementPage />} /> */}
-          {/* <Route path="analytics" element={<AdminAnalyticsPage />} /> */}
-          {/* <Route path="settings" element={<AdminSettingsPage />} /> */}
+          <Route path="users" element={<AdminUserManagementPage />} />
+          <Route path="appointments" element={<AdminAppointmentManagementPage />} />
+          <Route path="settings" element={<AdminSettingsPage />} />
+          <Route path="dev-data-tools" element={<DevDataToolsPage />} />
         </Route>
       </Route>
 

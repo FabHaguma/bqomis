@@ -1,0 +1,73 @@
+@use '../../../assets/styles/variables.scss' as styleVar;
+@use "sass:color";
+@use "sass:math";
+
+.user-form {
+  // ... (copy styles from ServiceForm.scss or BranchForm.scss for inputs, labels, form-actions, error messages)
+  // No major unique styles needed unless you want to differentiate it.
+  // For brevity, assuming you'll adapt one of the existing form SCSS files.
+  // Example structure:
+  display: flex;
+  flex-direction: column;
+  gap: styleVar.$spacing-lg * 0.8;
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: styleVar.$spacing-xs;
+    label { font-weight: bold; color: styleVar.$text-secondary; font-size: 0.9em; margin-bottom: math.div(styleVar.$spacing-xs, 2); }
+    input[type="text"], input[type="email"], input[type="password"], input[type="tel"], select {
+      padding: styleVar.$spacing-sm (styleVar.$spacing-sm * 1.5);
+      border: 1px solid styleVar.$border-color;
+      // ... rest of input/select styling
+    }
+    select {
+      padding: styleVar.$spacing-sm (styleVar.$spacing-sm * 1.5);
+      border: 1px solid styleVar.$border-color;
+      border-radius: styleVar.$border-radius-sm;
+      background-color: styleVar.$bg-tertiary;
+      color: styleVar.$text-primary;
+      font-size: 1em;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+
+      &:focus {
+        outline: none;
+        border-color: styleVar.$primary-color;
+        box-shadow: 0 0 0 2px rgba(styleVar.$primary-color, 0.3);
+      }
+
+      &:disabled {
+        background-color: color.adjust(styleVar.$bg-tertiary, $lightness: 3%);
+        opacity: 0.7;
+        cursor: not-allowed;
+      }
+      
+      &::placeholder { // If you add placeholders
+        color: styleVar.$neutral-medium-light;
+      }
+    }
+  }
+  // Re-use alert styling from AdminBranchManagementPage or define globally
+  .error-message.alert.alert-danger {
+    padding: styleVar.$spacing-md;
+    margin-bottom: 0; // Form already has gap
+    border: 1px solid transparent;
+    border-radius: styleVar.$border-radius-sm;
+    color: color.adjust(styleVar.$error-color, $lightness: -10%);
+    background-color: color.adjust(styleVar.$error-color, $lightness: 35%);
+    border-color: color.adjust(styleVar.$error-color, $lightness: 25%);
+    font-size: 0.9em;
+  }
+
+  .form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: styleVar.$spacing-md;
+    margin-top: styleVar.$spacing-md; // Add some space above actions
+
+    .btn {
+      // Assuming global .btn styles from AdminBranchManagementPage.scss apply
+      // or are defined in your main.scss/_buttons.scss
+    }
+  }
+}

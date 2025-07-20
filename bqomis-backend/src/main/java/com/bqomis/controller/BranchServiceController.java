@@ -42,6 +42,12 @@ public class BranchServiceController {
         return ResponseEntity.ok(branchServices);
     }
 
+    @GetMapping("/district/{districtName}")
+    public ResponseEntity<List<BranchServiceDTO>> getBranchServicesByDistrictName(@PathVariable String districtName) {
+        List<BranchServiceDTO> branchServices = branchServiceService.findBrancheServiceByDistrictName(districtName);
+        return ResponseEntity.ok(branchServices);
+    }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteBranchServiceById(@PathVariable Long id) {
         branchServiceService.deleteBrancheServiceById(id);

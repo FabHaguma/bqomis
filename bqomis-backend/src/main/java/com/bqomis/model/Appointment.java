@@ -29,5 +29,5 @@ public class Appointment {
     private LocalTime time;
 
     @Column(name = "status", nullable = false)
-    private String status; // status = "on-queue", "out-of-queue", "finished"
+    private String status; // status = "SCHEDULED", "CHECKED_IN", "COMPLETED", "CANCELLED", "NO_SHOW"
 }

@@ -1,3 +1,5 @@
+@use "sass:color";
+@use "sass:math";
 @use '../../assets/styles/variables.scss' as styleVar;
 // @use '../../assets/styles/buttonStyles.scss';
 
@@ -22,9 +24,9 @@
     margin-bottom: styleVar.$spacing-lg;
     border: 1px solid transparent;
     border-radius: styleVar.$border-radius-sm;
-    color: darken(styleVar.$error-color, 10%);
-    background-color: lighten(styleVar.$error-color, 35%);
-    border-color: lighten(styleVar.$error-color, 25%);
+    color: color.adjust(styleVar.$error-color, $lightness: -10%);
+    background-color: color.adjust(styleVar.$error-color, $lightness: 35%);
+    border-color: color.adjust(styleVar.$error-color, $lightness: 25%);
   }
 
   .services-table-container { // Adapted from .branches-table-container
@@ -45,7 +47,7 @@
       }
 
       th {
-        background-color: lighten(styleVar.$bg-secondary, 5%);
+        background-color: color.adjust(styleVar.$bg-secondary, $lightness: 5%);
         font-weight: bold;
         color: styleVar.$text-primary;
       }
@@ -55,7 +57,7 @@
       }
 
       tbody tr:hover {
-        background-color: lighten(styleVar.$bg-secondary, 3%);
+        background-color: color.adjust(styleVar.$bg-secondary, $lightness: 3%);
       }
 
       td:last-child { // Actions column
@@ -104,7 +106,7 @@
   // .btn-danger {
   //   background-color: styleVar.$error-color;
   //   color: styleVar.$neutral-white;
-  //   &:hover:not(:disabled) { background-color: darken(styleVar.$error-color, 10%); }
+  //   &:hover:not(:disabled) { background-color: color.adjust(styleVar.$error-color, $lightness: -10%); }
   // }
   // .btn-sm {
   //   padding: styleVar.$spacing-xs styleVar.$spacing-sm;

@@ -36,8 +36,8 @@ public class LookupUtil {
     private Map<Long, Branch> branchMap = new HashMap<>();
     // private Map<Long, Long> branchIdByBSId = new HashMap<>();
     // private Map<Long, Long> serviceIdByBSId = new HashMap<>();
-    private Map<String, Long> branchServiceIdByStringOfIds = new HashMap<>(); // String of ids (branchId +"-"+
-                                                                              // serviceId)
+    private Map<String, Long> bsIdByBranchIdAndServiceId = new HashMap<>(); // (branchId +"-"+serviceId)
+    private Map<Long, String> branchIdAndServiceIdByBsId = new HashMap<>(); // (branchId +"-"+serviceId)
     private Map<Long, List<Long>> serviceIdListByBranchId = new HashMap<>();
 
     @PostConstruct
@@ -66,7 +66,8 @@ public class LookupUtil {
         for (BranchService bs : branchServices) {
             // Create a unique string key for branch and service combination
             String key = bs.getBranchId() + "-" + bs.getServiceId();
-            branchServiceIdByStringOfIds.put(key, bs.getId());
+            bsIdByBranchIdAndServiceId.put(key, bs.getId());
+            branchIdAndServiceIdByBsId.put(bs.getId(), key);
         }
 
         for (Branch branch : branches) {
@@ -169,7 +170,8 @@ public class LookupUtil {
     public void updateBranchService(BranchService branchService) {
         // Update the branch service ID map with the new branch and service IDs
         String key = branchService.getBranchId() + "-" + branchService.getServiceId();
-        branchServiceIdByStringOfIds.put(key, branchService.getId());
+        bsIdByBranchIdAndServiceId.put(key, branchService.getId());
+        branchIdAndServiceIdByBsId.put(branchService.getId(), key);
 
         List<Long> serviceIds = serviceIdListByBranchId.get(branchService.getBranchId());
         if (serviceIds == null) {
@@ -203,7 +205,7 @@ public class LookupUtil {
                 // Iterate through the service IDs and find the corresponding branch service IDs
                 for (Long serviceId : serviceIds) {
                     String key = branch.getId() + "-" + serviceId;
-                    Long branchServiceId = branchServiceIdByStringOfIds.get(key);
+                    Long branchServiceId = bsIdByBranchIdAndServiceId.get(key);
                     if (branchServiceId != null) {
                         branchServiceIds.add(branchServiceId);
                     }
@@ -218,7 +220,7 @@ public class LookupUtil {
         List<Branch> branchList = findBranchesByDistrictName(districtName);
         for (Branch branch : branchList) {
             String key = branch.getId() + "-" + serviceId;
-            Long branchServiceId = branchServiceIdByStringOfIds.get(key);
+            Long branchServiceId = bsIdByBranchIdAndServiceId.get(key);
             if (branchServiceId != null) {
                 branchServiceIds.add(branchServiceId);
             }
@@ -229,7 +231,7 @@ public class LookupUtil {
     public List<Long> getBranchServiceIdsByBranchAndService(Long branchId, Long serviceId) {
         List<Long> branchServiceIds = new ArrayList<>();
         String key = branchId + "-" + serviceId;
-        Long branchServiceId = branchServiceIdByStringOfIds.get(key);
+        Long branchServiceId = bsIdByBranchIdAndServiceId.get(key);
         if (branchServiceId != null) {
             branchServiceIds.add(branchServiceId);
         }
@@ -242,7 +244,7 @@ public class LookupUtil {
         if (serviceIds != null) {
             for (Long serviceId : serviceIds) {
                 String key = branchId + "-" + serviceId;
-                Long branchServiceId = branchServiceIdByStringOfIds.get(key);
+                Long branchServiceId = bsIdByBranchIdAndServiceId.get(key);
                 if (branchServiceId != null) {
                     branchServiceIds.add(branchServiceId);
                 }
@@ -251,15 +253,25 @@ public class LookupUtil {
         return branchServiceIds;
     }
 
+    public List<Long> getBranchServiceIdsByServiceId(Long serviceId) {
+        List<Long> branchServiceIds = new ArrayList<>();
+        for (Map.Entry<String, Long> entry : bsIdByBranchIdAndServiceId.entrySet()) {
+            String key = entry.getKey();
+            String[] parts = key.split("-");
+            if (Long.parseLong(parts[1]) == serviceId) {
+                branchServiceIds.add(entry.getValue());
+            }
+        }
+        return branchServiceIds;
+    }
+
     public Long[] getBranchIdAndServiceIdByBranchServiceId(Long branchServiceId) {
         Long[] ids = new Long[2];
-        for (Map.Entry<String, Long> entry : branchServiceIdByStringOfIds.entrySet()) {
-            if (entry.getValue().equals(branchServiceId)) {
-                String[] parts = entry.getKey().split("-");
-                ids[0] = Long.parseLong(parts[0]); // branchId
-                ids[1] = Long.parseLong(parts[1]); // serviceId
-                break;
-            }
+        String key = branchIdAndServiceIdByBsId.get(branchServiceId);
+        if (key != null) {
+            String[] parts = key.split("-");
+            ids[0] = Long.parseLong(parts[0]); // Branch ID
+            ids[1] = Long.parseLong(parts[1]); // Service ID
         }
         return ids;
     }

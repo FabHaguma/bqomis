@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation, Link } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import './SignInPage.scss';
 
@@ -73,7 +73,7 @@ const SignInPage = () => {
           </button>
         </form>
         <p className="signup-link">
-          Don't have an account? <a href="/signup">Sign Up</a> {/* Link to SignUpPage later */}
+          Don't have an account? <Link to="/signup">Sign Up</Link>
         </p>
       </div>
     </div>

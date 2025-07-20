@@ -1,0 +1,781 @@
+{
+  "users": [
+    {
+      "username": "Gasabo Tester1",
+      "email": "gasabo.tester1@bqomis.com",
+      "phoneNumber": "0771000001",
+      "password": "Gasabo@Tester1",
+      "role": "TESTER"
+    },
+    {
+      "username": "Gasabo Tester2",
+      "email": "gasabo.tester2@bqomis.com",
+      "phoneNumber": "0771000002",
+      "password": "Gasabo@Tester2",
+      "role": "TESTER"
+    },
+    {
+      "username": "Gasabo Tester3",
+      "email": "gasabo.tester3@bqomis.com",
+      "phoneNumber": "0771000003",
+      "password": "Gasabo@Tester3",
+      "role": "TESTER"
+    },
+    {
+      "username": "Gasabo Tester4",
+      "email": "gasabo.tester4@bqomis.com",
+      "phoneNumber": "0771000004",
+      "password": "Gasabo@Tester4",
+      "role": "TESTER"
+    },
+    {
+      "username": "Gasabo Tester5",
+      "email": "gasabo.tester5@bqomis.com",
+      "phoneNumber": "0771000005",
+      "password": "Gasabo@Tester5",
+      "role": "TESTER"
+    },
+    {
+      "username": "Gasabo Tester6",
+      "email": "gasabo.tester6@bqomis.com",
+      "phoneNumber": "0771000006",
+      "password": "Gasabo@Tester6",
+      "role": "TESTER"
+    },
+    {
+      "username": "Gasabo Tester7",
+      "email": "gasabo.tester7@bqomis.com",
+      "phoneNumber": "0771000007",
+      "password": "Gasabo@Tester7",
+      "role": "TESTER"
+    },
+    {
+      "username": "Gasabo Tester8",
+      "email": "gasabo.tester8@bqomis.com",
+      "phoneNumber": "0771000008",
+      "password": "Gasabo@Tester8",
+      "role": "TESTER"
+    },
+    {
+      "username": "Gasabo Tester9",
+      "email": "gasabo.tester9@bqomis.com",
+      "phoneNumber": "0771000009",
+      "password": "Gasabo@Tester9",
+      "role": "TESTER"
+    },
+    {
+      "username": "Gasabo Tester10",
+      "email": "gasabo.tester10@bqomis.com",
+      "phoneNumber": "0771000010",
+      "password": "Gasabo@Tester10",
+      "role": "TESTER"
+    },
+    {
+      "username": "Kicukiro Tester1",
+      "email": "kicukiro.tester1@bqomis.com",
+      "phoneNumber": "0772000001",
+      "password": "Kicukiro@Tester1",
+      "role": "TESTER"
+    },
+    {
+      "username": "Kicukiro Tester2",
+      "email": "kicukiro.tester2@bqomis.com",
+      "phoneNumber": "0772000002",
+      "password": "Kicukiro@Tester2",
+      "role": "TESTER"
+    },
+    {
+      "username": "Kicukiro Tester3",
+      "email": "kicukiro.tester3@bqomis.com",
+      "phoneNumber": "0772000003",
+      "password": "Kicukiro@Tester3",
+      "role": "TESTER"
+    },
+    {
+      "username": "Kicukiro Tester4",
+      "email": "kicukiro.tester4@bqomis.com",
+      "phoneNumber": "0772000004",
+      "password": "Kicukiro@Tester4",
+      "role": "TESTER"
+    },
+    {
+      "username": "Kicukiro Tester5",
+      "email": "kicukiro.tester5@bqomis.com",
+      "phoneNumber": "0772000005",
+      "password": "Kicukiro@Tester5",
+      "role": "TESTER"
+    },
+    {
+      "username": "Kicukiro Tester6",
+      "email": "kicukiro.tester6@bqomis.com",
+      "phoneNumber": "0772000006",
+      "password": "Kicukiro@Tester6",
+      "role": "TESTER"
+    },
+    {
+      "username": "Kicukiro Tester7",
+      "email": "kicukiro.tester7@bqomis.com",
+      "phoneNumber": "0772000007",
+      "password": "Kicukiro@Tester7",
+      "role": "TESTER"
+    },
+    {
+      "username": "Kicukiro Tester8",
+      "email": "kicukiro.tester8@bqomis.com",
+      "phoneNumber": "0772000008",
+      "password": "Kicukiro@Tester8",
+      "role": "TESTER"
+    },
+    {
+      "username": "Kicukiro Tester9",
+      "email": "kicukiro.tester9@bqomis.com",
+      "phoneNumber": "0772000009",
+      "password": "Kicukiro@Tester9",
+      "role": "TESTER"
+    },
+    {
+      "username": "Kicukiro Tester10",
+      "email": "kicukiro.tester10@bqomis.com",
+      "phoneNumber": "0772000010",
+      "password": "Kicukiro@Tester10",
+      "role": "TESTER"
+    },
+    {
+      "username": "Nyarugenge Tester1",
+      "email": "nyarugenge.tester1@bqomis.com",
+      "phoneNumber": "0773000001",
+      "password": "Nyarugenge@Tester1",
+      "role": "TESTER"
+    },
+    {
+      "username": "Nyarugenge Tester2",
+      "email": "nyarugenge.tester2@bqomis.com",
+      "phoneNumber": "0773000002",
+      "password": "Nyarugenge@Tester2",
+      "role": "TESTER"
+    },
+    {
+      "username": "Nyarugenge Tester3",
+      "email": "nyarugenge.tester3@bqomis.com",
+      "phoneNumber": "0773000003",
+      "password": "Nyarugenge@Tester3",
+      "role": "TESTER"
+    },
+    {
+      "username": "Nyarugenge Tester4",
+      "email": "nyarugenge.tester4@bqomis.com",
+      "phoneNumber": "0773000004",
+      "password": "Nyarugenge@Tester4",
+      "role": "TESTER"
+    },
+    {
+      "username": "Nyarugenge Tester5",
+      "email": "nyarugenge.tester5@bqomis.com",
+      "phoneNumber": "0773000005",
+      "password": "Nyarugenge@Tester5",
+      "role": "TESTER"
+    },
+    {
+      "username": "Nyarugenge Tester6",
+      "email": "nyarugenge.tester6@bqomis.com",
+      "phoneNumber": "0773000006",
+      "password": "Nyarugenge@Tester6",
+      "role": "TESTER"
+    },
+    {
+      "username": "Nyarugenge Tester7",
+      "email": "nyarugenge.tester7@bqomis.com",
+      "phoneNumber": "0773000007",
+      "password": "Nyarugenge@Tester7",
+      "role": "TESTER"
+    },
+    {
+      "username": "Nyarugenge Tester8",
+      "email": "nyarugenge.tester8@bqomis.com",
+      "phoneNumber": "0773000008",
+      "password": "Nyarugenge@Tester8",
+      "role": "TESTER"
+    },
+    {
+      "username": "Nyarugenge Tester9",
+      "email": "nyarugenge.tester9@bqomis.com",
+      "phoneNumber": "0773000009",
+      "password": "Nyarugenge@Tester9",
+      "role": "TESTER"
+    },
+    {
+      "username": "Nyarugenge Tester10",
+      "email": "nyarugenge.tester10@bqomis.com",
+      "phoneNumber": "0773000010",
+      "password": "Nyarugenge@Tester10",
+      "role": "TESTER"
+    },
+    {
+      "username": "Bugesera Tester1",
+      "email": "bugesera.tester1@bqomis.com",
+      "phoneNumber": "0711000001",
+      "password": "Bugesera@Tester1",
+      "role": "TESTER"
+    },
+    {
+      "username": "Bugesera Tester2",
+      "email": "bugesera.tester2@bqomis.com",
+      "phoneNumber": "0711000002",
+      "password": "Bugesera@Tester2",
+      "role": "TESTER"
+    },
+    {
+      "username": "Bugesera Tester3",
+      "email": "bugesera.tester3@bqomis.com",
+      "phoneNumber": "0711000003",
+      "password": "Bugesera@Tester3",
+      "role": "TESTER"
+    },
+    {
+      "username": "Gatsibo Tester1",
+      "email": "gatsibo.tester1@bqomis.com",
+      "phoneNumber": "0712000001",
+      "password": "Gatsibo@Tester1",
+      "role": "TESTER"
+    },
+    {
+      "username": "Gatsibo Tester2",
+      "email": "gatsibo.tester2@bqomis.com",
+      "phoneNumber": "0712000002",
+      "password": "Gatsibo@Tester2",
+      "role": "TESTER"
+    },
+    {
+      "username": "Gatsibo Tester3",
+      "email": "gatsibo.tester3@bqomis.com",
+      "phoneNumber": "0712000003",
+      "password": "Gatsibo@Tester3",
+      "role": "TESTER"
+    },
+    {
+      "username": "Kayonza Tester1",
+      "email": "kayonza.tester1@bqomis.com",
+      "phoneNumber": "0713000001",
+      "password": "Kayonza@Tester1",
+      "role": "TESTER"
+    },
+    {
+      "username": "Kayonza Tester2",
+      "email": "kayonza.tester2@bqomis.com",
+      "phoneNumber": "0713000002",
+      "password": "Kayonza@Tester2",
+      "role": "TESTER"
+    },
+    {
+      "username": "Kayonza Tester3",
+      "email": "kayonza.tester3@bqomis.com",
+      "phoneNumber": "0713000003",
+      "password": "Kayonza@Tester3",
+      "role": "TESTER"
+    },
+    {
+      "username": "Kirehe Tester1",
+      "email": "kirehe.tester1@bqomis.com",
+      "phoneNumber": "0714000001",
+      "password": "Kirehe@Tester1",
+      "role": "TESTER"
+    },
+    {
+      "username": "Kirehe Tester2",
+      "email": "kirehe.tester2@bqomis.com",
+      "phoneNumber": "0714000002",
+      "password": "Kirehe@Tester2",
+      "role": "TESTER"
+    },
+    {
+      "username": "Kirehe Tester3",
+      "email": "kirehe.tester3@bqomis.com",
+      "phoneNumber": "0714000003",
+      "password": "Kirehe@Tester3",
+      "role": "TESTER"
+    },
+    {
+      "username": "Ngoma Tester1",
+      "email": "ngoma.tester1@bqomis.com",
+      "phoneNumber": "0715000001",
+      "password": "Ngoma@Tester1",
+      "role": "TESTER"
+    },
+    {
+      "username": "Ngoma Tester2",
+      "email": "ngoma.tester2@bqomis.com",
+      "phoneNumber": "0715000002",
+      "password": "Ngoma@Tester2",
+      "role": "TESTER"
+    },
+    {
+      "username": "Ngoma Tester3",
+      "email": "ngoma.tester3@bqomis.com",
+      "phoneNumber": "0715000003",
+      "password": "Ngoma@Tester3",
+      "role": "TESTER"
+    },
+    {
+      "username": "Nyagatare Tester1",
+      "email": "nyagatare.tester1@bqomis.com",
+      "phoneNumber": "0716000001",
+      "password": "Nyagatare@Tester1",
+      "role": "TESTER"
+    },
+    {
+      "username": "Nyagatare Tester2",
+      "email": "nyagatare.tester2@bqomis.com",
+      "phoneNumber": "0716000002",
+      "password": "Nyagatare@Tester2",
+      "role": "TESTER"
+    },
+    {
+      "username": "Nyagatare Tester3",
+      "email": "nyagatare.tester3@bqomis.com",
+      "phoneNumber": "0716000003",
+      "password": "Nyagatare@Tester3",
+      "role": "TESTER"
+    },
+    {
+      "username": "Rwamagana Tester1",
+      "email": "rwamagana.tester1@bqomis.com",
+      "phoneNumber": "0717000001",
+      "password": "Rwamagana@Tester1",
+      "role": "TESTER"
+    },
+    {
+      "username": "Rwamagana Tester2",
+      "email": "rwamagana.tester2@bqomis.com",
+      "phoneNumber": "0717000002",
+      "password": "Rwamagana@Tester2",
+      "role": "TESTER"
+    },
+    {
+      "username": "Rwamagana Tester3",
+      "email": "rwamagana.tester3@bqomis.com",
+      "phoneNumber": "0717000003",
+      "password": "Rwamagana@Tester3",
+      "role": "TESTER"
+    },
+    {
+      "username": "Burera Tester1",
+      "email": "burera.tester1@bqomis.com",
+      "phoneNumber": "0741000001",
+      "password": "Burera@Tester1",
+      "role": "TESTER"
+    },
+    {
+      "username": "Burera Tester2",
+      "email": "burera.tester2@bqomis.com",
+      "phoneNumber": "0741000002",
+      "password": "Burera@Tester2",
+      "role": "TESTER"
+    },
+    {
+      "username": "Burera Tester3",
+      "email": "burera.tester3@bqomis.com",
+      "phoneNumber": "0741000003",
+      "password": "Burera@Tester3",
+      "role": "TESTER"
+    },
+    {
+      "username": "Gakenke Tester1",
+      "email": "gakenke.tester1@bqomis.com",
+      "phoneNumber": "0742000001",
+      "password": "Gakenke@Tester1",
+      "role": "TESTER"
+    },
+    {
+      "username": "Gakenke Tester2",
+      "email": "gakenke.tester2@bqomis.com",
+      "phoneNumber": "0742000002",
+      "password": "Gakenke@Tester2",
+      "role": "TESTER"
+    },
+    {
+      "username": "Gakenke Tester3",
+      "email": "gakenke.tester3@bqomis.com",
+      "phoneNumber": "0742000003",
+      "password": "Gakenke@Tester3",
+      "role": "TESTER"
+    },
+    {
+      "username": "Gicumbi Tester1",
+      "email": "gicumbi.tester1@bqomis.com",
+      "phoneNumber": "0743000001",
+      "password": "Gicumbi@Tester1",
+      "role": "TESTER"
+    },
+    {
+      "username": "Gicumbi Tester2",
+      "email": "gicumbi.tester2@bqomis.com",
+      "phoneNumber": "0743000002",
+      "password": "Gicumbi@Tester2",
+      "role": "TESTER"
+    },
+    {
+      "username": "Gicumbi Tester3",
+      "email": "gicumbi.tester3@bqomis.com",
+      "phoneNumber": "0743000003",
+      "password": "Gicumbi@Tester3",
+      "role": "TESTER"
+    },
+    {
+      "username": "Musanze Tester1",
+      "email": "musanze.tester1@bqomis.com",
+      "phoneNumber": "0744000001",
+      "password": "Musanze@Tester1",
+      "role": "TESTER"
+    },
+    {
+      "username": "Musanze Tester2",
+      "email": "musanze.tester2@bqomis.com",
+      "phoneNumber": "0744000002",
+      "password": "Musanze@Tester2",
+      "role": "TESTER"
+    },
+    {
+      "username": "Musanze Tester3",
+      "email": "musanze.tester3@bqomis.com",
+      "phoneNumber": "0744000003",
+      "password": "Musanze@Tester3",
+      "role": "TESTER"
+    },
+    {
+      "username": "Rulindo Tester1",
+      "email": "rulindo.tester1@bqomis.com",
+      "phoneNumber": "0745000001",
+      "password": "Rulindo@Tester1",
+      "role": "TESTER"
+    },
+    {
+      "username": "Rulindo Tester2",
+      "email": "rulindo.tester2@bqomis.com",
+      "phoneNumber": "0745000002",
+      "password": "Rulindo@Tester2",
+      "role": "TESTER"
+    },
+    {
+      "username": "Rulindo Tester3",
+      "email": "rulindo.tester3@bqomis.com",
+      "phoneNumber": "0745000003",
+      "password": "Rulindo@Tester3",
+      "role": "TESTER"
+    },
+    {
+      "username": "Gisagara Tester1",
+      "email": "gisagara.tester1@bqomis.com",
+      "phoneNumber": "0751000001",
+      "password": "Gisagara@Tester1",
+      "role": "TESTER"
+    },
+    {
+      "username": "Gisagara Tester2",
+      "email": "gisagara.tester2@bqomis.com",
+      "phoneNumber": "0751000002",
+      "password": "Gisagara@Tester2",
+      "role": "TESTER"
+    },
+    {
+      "username": "Gisagara Tester3",
+      "email": "gisagara.tester3@bqomis.com",
+      "phoneNumber": "0751000003",
+      "password": "Gisagara@Tester3",
+      "role": "TESTER"
+    },
+    {
+      "username": "Huye Tester1",
+      "email": "huye.tester1@bqomis.com",
+      "phoneNumber": "0752000001",
+      "password": "Huye@Tester1",
+      "role": "TESTER"
+    },
+    {
+      "username": "Huye Tester2",
+      "email": "huye.tester2@bqomis.com",
+      "phoneNumber": "0752000002",
+      "password": "Huye@Tester2",
+      "role": "TESTER"
+    },
+    {
+      "username": "Huye Tester3",
+      "email": "huye.tester3@bqomis.com",
+      "phoneNumber": "0752000003",
+      "password": "Huye@Tester3",
+      "role": "TESTER"
+    },
+    {
+      "username": "Kamonyi Tester1",
+      "email": "kamonyi.tester1@bqomis.com",
+      "phoneNumber": "0753000001",
+      "password": "Kamonyi@Tester1",
+      "role": "TESTER"
+    },
+    {
+      "username": "Kamonyi Tester2",
+      "email": "kamonyi.tester2@bqomis.com",
+      "phoneNumber": "0753000002",
+      "password": "Kamonyi@Tester2",
+      "role": "TESTER"
+    },
+    {
+      "username": "Kamonyi Tester3",
+      "email": "kamonyi.tester3@bqomis.com",
+      "phoneNumber": "0753000003",
+      "password": "Kamonyi@Tester3",
+      "role": "TESTER"
+    },
+    {
+      "username": "Muhanga Tester1",
+      "email": "muhanga.tester1@bqomis.com",
+      "phoneNumber": "0754000001",
+      "password": "Muhanga@Tester1",
+      "role": "TESTER"
+    },
+    {
+      "username": "Muhanga Tester2",
+      "email": "muhanga.tester2@bqomis.com",
+      "phoneNumber": "0754000002",
+      "password": "Muhanga@Tester2",
+      "role": "TESTER"
+    },
+    {
+      "username": "Muhanga Tester3",
+      "email": "muhanga.tester3@bqomis.com",
+      "phoneNumber": "0754000003",
+      "password": "Muhanga@Tester3",
+      "role": "TESTER"
+    },
+    {
+      "username": "Nyamagabe Tester1",
+      "email": "nyamagabe.tester1@bqomis.com",
+      "phoneNumber": "0755000001",
+      "password": "Nyamagabe@Tester1",
+      "role": "TESTER"
+    },
+    {
+      "username": "Nyamagabe Tester2",
+      "email": "nyamagabe.tester2@bqomis.com",
+      "phoneNumber": "0755000002",
+      "password": "Nyamagabe@Tester2",
+      "role": "TESTER"
+    },
+    {
+      "username": "Nyamagabe Tester3",
+      "email": "nyamagabe.tester3@bqomis.com",
+      "phoneNumber": "0755000003",
+      "password": "Nyamagabe@Tester3",
+      "role": "TESTER"
+    },
+    {
+      "username": "Nyanza Tester1",
+      "email": "nyanza.tester1@bqomis.com",
+      "phoneNumber": "0756000001",
+      "password": "Nyanza@Tester1",
+      "role": "TESTER"
+    },
+    {
+      "username": "Nyanza Tester2",
+      "email": "nyanza.tester2@bqomis.com",
+      "phoneNumber": "0756000002",
+      "password": "Nyanza@Tester2",
+      "role": "TESTER"
+    },
+    {
+      "username": "Nyanza Tester3",
+      "email": "nyanza.tester3@bqomis.com",
+      "phoneNumber": "0756000003",
+      "password": "Nyanza@Tester3",
+      "role": "TESTER"
+    },
+    {
+      "username": "Nyaruguru Tester1",
+      "email": "nyaruguru.tester1@bqomis.com",
+      "phoneNumber": "0757000001",
+      "password": "Nyaruguru@Tester1",
+      "role": "TESTER"
+    },
+    {
+      "username": "Nyaruguru Tester2",
+      "email": "nyaruguru.tester2@bqomis.com",
+      "phoneNumber": "0757000002",
+      "password": "Nyaruguru@Tester2",
+      "role": "TESTER"
+    },
+    {
+      "username": "Nyaruguru Tester3",
+      "email": "nyaruguru.tester3@bqomis.com",
+      "phoneNumber": "0757000003",
+      "password": "Nyaruguru@Tester3",
+      "role": "TESTER"
+    },
+    {
+      "username": "Ruhango Tester1",
+      "email": "ruhango.tester1@bqomis.com",
+      "phoneNumber": "0758000001",
+      "password": "Ruhango@Tester1",
+      "role": "TESTER"
+    },
+    {
+      "username": "Ruhango Tester2",
+      "email": "ruhango.tester2@bqomis.com",
+      "phoneNumber": "0758000002",
+      "password": "Ruhango@Tester2",
+      "role": "TESTER"
+    },
+    {
+      "username": "Ruhango Tester3",
+      "email": "ruhango.tester3@bqomis.com",
+      "phoneNumber": "0758000003",
+      "password": "Ruhango@Tester3",
+      "role": "TESTER"
+    },
+    {
+      "username": "Karongi Tester1",
+      "email": "karongi.tester1@bqomis.com",
+      "phoneNumber": "0761000001",
+      "password": "Karongi@Tester1",
+      "role": "TESTER"
+    },
+    {
+      "username": "Karongi Tester2",
+      "email": "karongi.tester2@bqomis.com",
+      "phoneNumber": "0761000002",
+      "password": "Karongi@Tester2",
+      "role": "TESTER"
+    },
+    {
+      "username": "Karongi Tester3",
+      "email": "karongi.tester3@bqomis.com",
+      "phoneNumber": "0761000003",
+      "password": "Karongi@Tester3",
+      "role": "TESTER"
+    },
+    {
+      "username": "Ngororero Tester1",
+      "email": "ngororero.tester1@bqomis.com",
+      "phoneNumber": "0762000001",
+      "password": "Ngororero@Tester1",
+      "role": "TESTER"
+    },
+    {
+      "username": "Ngororero Tester2",
+      "email": "ngororero.tester2@bqomis.com",
+      "phoneNumber": "0762000002",
+      "password": "Ngororero@Tester2",
+      "role": "TESTER"
+    },
+    {
+      "username": "Ngororero Tester3",
+      "email": "ngororero.tester3@bqomis.com",
+      "phoneNumber": "0762000003",
+      "password": "Ngororero@Tester3",
+      "role": "TESTER"
+    },
+    {
+      "username": "Nyabihu Tester1",
+      "email": "nyabihu.tester1@bqomis.com",
+      "phoneNumber": "0763000001",
+      "password": "Nyabihu@Tester1",
+      "role": "TESTER"
+    },
+    {
+      "username": "Nyabihu Tester2",
+      "email": "nyabihu.tester2@bqomis.com",
+      "phoneNumber": "0763000002",
+      "password": "Nyabihu@Tester2",
+      "role": "TESTER"
+    },
+    {
+      "username": "Nyabihu Tester3",
+      "email": "nyabihu.tester3@bqomis.com",
+      "phoneNumber": "0763000003",
+      "password": "Nyabihu@Tester3",
+      "role": "TESTER"
+    },
+    {
+      "username": "Nyamasheke Tester1",
+      "email": "nyamasheke.tester1@bqomis.com",
+      "phoneNumber": "0764000001",
+      "password": "Nyamasheke@Tester1",
+      "role": "TESTER"
+    },
+    {
+      "username": "Nyamasheke Tester2",
+      "email": "nyamasheke.tester2@bqomis.com",
+      "phoneNumber": "0764000002",
+      "password": "Nyamasheke@Tester2",
+      "role": "TESTER"
+    },
+    {
+      "username": "Nyamasheke Tester3",
+      "email": "nyamasheke.tester3@bqomis.com",
+      "phoneNumber": "0764000003",
+      "password": "Nyamasheke@Tester3",
+      "role": "TESTER"
+    },
+    {
+      "username": "Rubavu Tester1",
+      "email": "rubavu.tester1@bqomis.com",
+      "phoneNumber": "0765000001",
+      "password": "Rubavu@Tester1",
+      "role": "TESTER"
+    },
+    {
+      "username": "Rubavu Tester2",
+      "email": "rubavu.tester2@bqomis.com",
+      "phoneNumber": "0765000002",
+      "password": "Rubavu@Tester2",
+      "role": "TESTER"
+    },
+    {
+      "username": "Rubavu Tester3",
+      "email": "rubavu.tester3@bqomis.com",
+      "phoneNumber": "0765000003",
+      "password": "Rubavu@Tester3",
+      "role": "TESTER"
+    },
+    {
+      "username": "Rusizi Tester1",
+      "email": "rusizi.tester1@bqomis.com",
+      "phoneNumber": "0766000001",
+      "password": "Rusizi@Tester1",
+      "role": "TESTER"
+    },
+    {
+      "username": "Rusizi Tester2",
+      "email": "rusizi.tester2@bqomis.com",
+      "phoneNumber": "0766000002",
+      "password": "Rusizi@Tester2",
+      "role": "TESTER"
+    },
+    {
+      "username": "Rusizi Tester3",
+      "email": "rusizi.tester3@bqomis.com",
+      "phoneNumber": "0766000003",
+      "password": "Rusizi@Tester3",
+      "role": "TESTER"
+    },
+    {
+      "username": "Rutsiro Tester1",
+      "email": "rutsiro.tester1@bqomis.com",
+      "phoneNumber": "0767000001",
+      "password": "Rutsiro@Tester1",
+      "role": "TESTER"
+    },
+    {
+      "username": "Rutsiro Tester2",
+      "email": "rutsiro.tester2@bqomis.com",
+      "phoneNumber": "0767000002",
+      "password": "Rutsiro@Tester2",
+      "role": "TESTER"
+    },
+    {
+      "username": "Rutsiro Tester3",
+      "email": "rutsiro.tester3@bqomis.com",
+      "phoneNumber": "0767000003",
+      "password": "Rutsiro@Tester3",
+      "role": "TESTER"
+    }
+  ]
+}

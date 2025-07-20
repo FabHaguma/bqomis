@@ -37,6 +37,12 @@ public class BranchServiceService {
         return branchService.stream().map(mapperUtil::toBranchServiceDTO).toList();
     }
 
+    public List<BranchServiceDTO> findBrancheServiceByDistrictName(String districtName) {
+        List<Long> branchServiceIdList = lookupUtil.getBranchServiceIdsByDistrict(districtName);
+        List<BranchService> branchService = branchServiceRepository.findByIdIn(branchServiceIdList);
+        return branchService.stream().map(mapperUtil::toBranchServiceDTO).toList();
+    }
+
     public BranchServiceDTO save(BranchService branchService) {
         BranchService savedBranchService = branchServiceRepository.save(branchService);
         lookupUtil.updateBranchService(savedBranchService);

@@ -1,4 +1,6 @@
 @use '../../../assets/styles/variables.scss' as styleVar;
+@use "sass:color";
+@use "sass:math";
 
 .branch-form {
   display: flex;
@@ -14,7 +16,7 @@
       font-weight: bold;
       color: styleVar.$text-secondary;
       font-size: 0.9em;
-      margin-bottom: styleVar.$spacing-xs / 2;
+      margin-bottom: math.div(styleVar.$spacing-xs, 2);
     }
 
     input[type="text"],
@@ -34,7 +36,7 @@
       }
 
       &:disabled {
-        background-color: lighten(styleVar.$bg-tertiary, 3%);
+        background-color: color.adjust(styleVar.$bg-tertiary, $lightness: 3%);
         opacity: 0.7;
         cursor: not-allowed;
       }
@@ -45,7 +47,7 @@
     }
     
     input[type="text"]:read-only {
-      background-color: lighten(styleVar.$bg-tertiary, 5%); // Slightly different for read-only
+      background-color: color.adjust(styleVar.$bg-tertiary, $lightness: 5%); // Slightly different for read-only
       // cursor: default; // Or not-allowed if it should feel more static
       opacity: 0.8;
     }
@@ -57,9 +59,9 @@
     margin-bottom: 0; // Form already has gap
     border: 1px solid transparent;
     border-radius: styleVar.$border-radius-sm;
-    color: darken(styleVar.$error-color, 10%);
-    background-color: lighten(styleVar.$error-color, 35%);
-    border-color: lighten(styleVar.$error-color, 25%);
+    color: color.adjust(styleVar.$error-color, $lightness: -10%);
+    background-color: color.adjust(styleVar.$error-color, $lightness: 35%);
+    border-color: color.adjust(styleVar.$error-color, $lightness: 25%);
     font-size: 0.9em;
   }
 

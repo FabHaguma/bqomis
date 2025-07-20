@@ -1,0 +1,150 @@
+@use "sass:color";
+@use "sass:math";
+@use '../../assets/styles/variables.scss' as styleVar;
+
+.dev-data-tools-page {
+  padding: styleVar.$spacing-lg;
+  max-width: 900px;
+  margin: 0 auto;
+
+  .page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: styleVar.$spacing-lg;
+
+    h1 {
+      margin: 0;
+      font-size: 2em;
+      color: styleVar.$neutral-darkest;
+    }
+  }
+  
+  .error-message.alert.alert-danger {
+    padding: styleVar.$spacing-md;
+    margin-bottom: styleVar.$spacing-lg;
+    border: 1px solid transparent;
+    border-radius: styleVar.$border-radius-sm;
+    color: color.adjust(styleVar.$error-color, $lightness: -10%);
+    background-color: color.adjust(styleVar.$error-color, $lightness: 35%);
+    border-color: color.adjust(styleVar.$error-color, $lightness: 25%);
+  }
+
+  .validation-error {
+    color: styleVar.$warning-color;
+    font-size: 0.9em;
+    margin-top: styleVar.$spacing-xs;
+  }
+
+  .tool-section {
+    background-color: styleVar.$bg-secondary;
+    padding: styleVar.$spacing-xl;
+    border-radius: styleVar.$border-radius-md;
+    margin-bottom: styleVar.$spacing-xl;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+
+    h2 {
+      font-size: 1.4em;
+      color: styleVar.$text-primary;
+      margin-top: 0;
+      margin-bottom: styleVar.$spacing-lg;
+      border-bottom: 1px solid styleVar.$border-color;
+      padding-bottom: styleVar.$spacing-sm;
+    }
+  }
+
+  .prereq-status {
+    margin-top: styleVar.$spacing-md;
+    p {
+      margin: styleVar.$spacing-xs 0;
+      color: styleVar.$text-secondary;
+      font-style: italic;
+    }
+  }
+
+  .config-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: styleVar.$spacing-lg;
+
+    @media (min-width: 768px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    fieldset {
+        border: 1px solid styleVar.$border-color;
+        padding: styleVar.$spacing-md;
+        border-radius: styleVar.$border-radius-sm;
+        legend {
+            font-weight: 500;
+            padding: 0 styleVar.$spacing-sm;
+            color: styleVar.$text-secondary;
+        }
+    }
+
+    .form-group {
+      margin-bottom: styleVar.$spacing-sm;
+      label {
+        display: block;
+        font-weight: 500;
+        color: styleVar.$text-secondary;
+        margin-bottom: styleVar.$spacing-xs;
+        font-size: 0.9em;
+      }
+      input[type="number"], input[type="text"] {
+        width: 100%;
+        max-width: 200px;
+        padding: styleVar.$spacing-sm;
+      }
+      input[type="checkbox"] {
+          margin-right: styleVar.$spacing-sm;
+          vertical-align: middle;
+      }
+      &.inline label, &.inline input {
+          display: inline-block;
+          margin-right: styleVar.$spacing-sm;
+          width: auto;
+      }
+      &.inline label:not(:first-child) {
+          margin-left: styleVar.$spacing-md;
+      }
+      &.inline input[type="number"]{
+          max-width: 60px;
+      }
+    }
+  }
+  
+  .btn-lg {
+      padding: styleVar.$spacing-md styleVar.$spacing-xl;
+      font-size: 1.1em;
+  }
+
+  .results-section {
+    h3 { margin-top: 0; color: styleVar.$text-primary; }
+    p { color: styleVar.$text-secondary; margin: styleVar.$spacing-xs 0; }
+    .failure-list {
+      list-style: none;
+      padding-left: 0;
+      max-height: 400px;
+      overflow-y: auto;
+      li {
+        background-color: color.adjust(styleVar.$bg-secondary, $lightness: 3%);
+        padding: styleVar.$spacing-md;
+        margin-bottom: styleVar.$spacing-sm;
+        border-radius: styleVar.$border-radius-sm;
+        border-left: 3px solid styleVar.$error-color;
+        p { margin: styleVar.$spacing-xs 0; }
+        pre {
+          background-color: styleVar.$bg-primary;
+          padding: styleVar.$spacing-sm;
+          border-radius: styleVar.$border-radius-sm;
+          font-size: 0.85em;
+          white-space: pre-wrap;
+          word-break: break-all;
+          max-height: 150px;
+          overflow-y: auto;
+        }
+      }
+    }
+  }
+}

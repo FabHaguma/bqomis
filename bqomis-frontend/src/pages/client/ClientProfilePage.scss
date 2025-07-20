@@ -1,3 +1,5 @@
+@use "sass:color";
+@use "sass:math";
 @use '../../assets/styles/variables.scss' as styleVar;
 @use '../../assets/styles/buttonStyles.scss';
 
@@ -69,11 +71,11 @@
         box-sizing: border-box;
 
         &:disabled:not([readonly]) { // For edit mode toggle, not for purely readonly fields
-          background-color: lighten(styleVar.$bg-tertiary, 2%);
+          background-color: color.adjust(styleVar.$bg-tertiary, $lightness: 2%);
           opacity: 0.8;
         }
         &:read-only { // For fields like email, role
-            background-color: darken(styleVar.$bg-tertiary, 3%);
+            background-color: color.adjust(styleVar.$bg-tertiary, $lightness: -3%);
             color: styleVar.$text-muted;
             cursor: default;
         }

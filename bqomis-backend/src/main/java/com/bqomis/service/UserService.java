@@ -20,15 +20,18 @@ public class UserService {
     @Autowired
     private MapperUtil mapperUtil;
 
-    public List<User> findAll() {
-        return userRepository.findAll();
+    public List<UserDTO> findAll() {
+        return userRepository.findAll().stream()
+                .map(mapperUtil::toUserDTO)
+                .toList();
     }
 
-    public Optional<User> findById(Long id) {
-        return userRepository.findById(id);
+    public Optional<UserDTO> findById(Long id) {
+        return userRepository.findById(id)
+                .map(mapperUtil::toUserDTO);
     }
 
-    public User save(User user) {
+    public UserDTO save(User user) {
         // Check if the user already exists
         User existingUser = userRepository.findByEmail(user.getEmail());
         if (existingUser != null && !existingUser.getId().equals(user.getId())) {
@@ -39,7 +42,8 @@ public class UserService {
         if (user.getPassword() != null) {
             user.setPassword(hashPassword(user.getPassword()));
         }
-        return userRepository.save(user);
+        User savedUser = userRepository.save(user);
+        return mapperUtil.toUserDTO(savedUser);
     }
 
     public void deleteById(Long id) {
@@ -69,6 +73,58 @@ public class UserService {
         user.setPassword(hashPassword(newPassword));
         userRepository.save(user);
         return true;
+    }
+
+    public List<UserDTO> findByRoles(List<String> roles) {
+        // Use a custom query if needed, but for now use stream filtering
+        List<User> users = userRepository.findByRoleIn(roles);
+        if (users.isEmpty()) {
+            return List.of(); // Return an empty list if no users found
+        }
+        return users.stream()
+                .map(mapperUtil::toUserDTO)
+                .toList();
+    }
+
+    public UserDTO partiallyUpdateUser(Long id, User user) {
+        Optional<User> existingUserOpt = userRepository.findById(id);
+        if (existingUserOpt.isEmpty()) {
+            throw new RuntimeException("User not found");
+        }
+        User existingUser = existingUserOpt.get();
+        // Only update fields that are not null in the request
+        if (user.getUsername() != null)
+            existingUser.setUsername(user.getUsername());
+        if (user.getEmail() != null)
+            existingUser.setEmail(user.getEmail());
+        if (user.getRole() != null)
+            existingUser.setRole(user.getRole());
+        if (user.getPhoneNumber() != null)
+            existingUser.setPhoneNumber(user.getPhoneNumber());
+        if (user.getProfilePicture() != null)
+            existingUser.setProfilePicture(user.getProfilePicture());
+        if (user.getPassword() != null && !user.getPassword().isEmpty()) {
+            existingUser.setPassword(hashPassword(user.getPassword()));
+        }
+        return mapperUtil.toUserDTO(userRepository.save(existingUser));
+    }
+
+    public UserDTO updateUser(Long id, User user) {
+        Optional<User> existingUserOpt = userRepository.findById(id);
+        if (existingUserOpt.isEmpty()) {
+            throw new RuntimeException("User not found");
+        }
+        User existingUser = existingUserOpt.get();
+        // Update all fields
+        existingUser.setUsername(user.getUsername());
+        existingUser.setEmail(user.getEmail());
+        existingUser.setRole(user.getRole());
+        existingUser.setPhoneNumber(user.getPhoneNumber());
+        existingUser.setProfilePicture(user.getProfilePicture());
+        if (user.getPassword() != null && !user.getPassword().isEmpty()) {
+            existingUser.setPassword(hashPassword(user.getPassword()));
+        }
+        return mapperUtil.toUserDTO(userRepository.save(existingUser));
     }
 
     private String hashPassword(String password) {

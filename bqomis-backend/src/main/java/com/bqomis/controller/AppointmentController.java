@@ -1,14 +1,19 @@
 package com.bqomis.controller;
 
 import com.bqomis.dto.AppointmentDTO;
+import com.bqomis.dto.BatchAppointmentResponseDTO;
 import com.bqomis.model.Appointment;
 import com.bqomis.service.AppointmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @RestController
@@ -19,26 +24,45 @@ public class AppointmentController {
     private AppointmentService appointmentService;
 
     @GetMapping
-    public ResponseEntity<List<Appointment>> getAllAppointments() {
+    public ResponseEntity<List<AppointmentDTO>> getAllAppointments() {
         return ResponseEntity.ok(appointmentService.findAll());
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Appointment> getAppointmentById(@PathVariable Long id) {
-        Optional<Appointment> appointment = appointmentService.findById(id);
+    public ResponseEntity<AppointmentDTO> getAppointmentById(@PathVariable Long id) {
+        Optional<AppointmentDTO> appointment = appointmentService.findById(id);
         return appointment.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     @PostMapping
-    public ResponseEntity<Appointment> createAppointment(@RequestBody AppointmentDTO appointment) {
-        Appointment savedAppointment = appointmentService.save(appointment);
+    public ResponseEntity<AppointmentDTO> createAppointment(@RequestBody AppointmentDTO appointment) {
+        AppointmentDTO savedAppointment = appointmentService.save(appointment);
         return ResponseEntity.ok(savedAppointment);
+    }
+
+    @PostMapping("/batch")
+    public ResponseEntity<BatchAppointmentResponseDTO> createMultipleAppointments(
+            @RequestBody List<AppointmentDTO> appointments) {
+        BatchAppointmentResponseDTO response = appointmentService.saveBatchAppointments(appointments);
+        return ResponseEntity.ok(response);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteAppointment(@PathVariable Long id) {
         appointmentService.deleteById(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @PutMapping("/{id}/status")
+    public ResponseEntity<Appointment> updateAppointmentStatus(@PathVariable Long id,
+            @RequestBody Map<String, String> payload) {
+        String status = payload.get("status");
+        Appointment updatedAppointment = appointmentService.updateStatus(id, status);
+        if (updatedAppointment != null) {
+            return ResponseEntity.ok(updatedAppointment);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 
     // MY OWN METHODS THAT DEALS WITH SPECIFIC APPOINTMENTS ACTIONS
@@ -99,6 +123,22 @@ public class AppointmentController {
     public ResponseEntity<List<AppointmentDTO>> getAppointmentsByUserId(@PathVariable Long userId) {
         List<AppointmentDTO> appointmentDTOs = appointmentService.findAppointmentsByUserId(userId);
         return ResponseEntity.ok(appointmentDTOs);
+    }
+
+    @GetMapping("/filtered")
+    public ResponseEntity<Page<AppointmentDTO>> getFilteredAppointments(
+            @RequestParam(required = false) String dateFrom,
+            @RequestParam(required = false) String dateTo,
+            @RequestParam(required = false) Long branchId,
+            @RequestParam(required = false) Long serviceId,
+            @RequestParam(required = false) String status,
+            @RequestParam(required = false) String districtName,
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size) {
+        Pageable pageable = PageRequest.of(page, size);
+        Page<AppointmentDTO> appointments = appointmentService.findFilteredAppointments(
+                dateFrom, dateTo, branchId, serviceId, status, districtName, pageable);
+        return ResponseEntity.ok(appointments);
     }
 
 }

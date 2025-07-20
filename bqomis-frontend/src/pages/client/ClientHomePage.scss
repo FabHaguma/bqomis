@@ -1,3 +1,5 @@
+@use "sass:color";
+@use "sass:math";
 @use '../../assets/styles/variables.scss' as styleVar;
 @use '../../assets/styles/buttonStyles.scss';
 
@@ -8,7 +10,7 @@
     text-align: center;
     margin-bottom: styleVar.$spacing-xl * 1.5;
     padding: styleVar.$spacing-lg;
-    background-color: lighten(styleVar.$bg-secondary, 3%);
+    background-color: color.adjust(styleVar.$bg-secondary, $lightness: 3%);
     border-radius: styleVar.$border-radius-md;
 
     h1 {
@@ -100,7 +102,6 @@
       color: styleVar.$text-primary;
       transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
       box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-
 
       &:hover {
         transform: translateY(-5px);

@@ -61,5 +61,86 @@ export const changePassword = async (passwordData, token) => {
   }
 };
 
-// Placeholder for account deletion - if you implement it
-// export const deleteUserAccount = async (userId, token) => { ... };
+// GET /api/users?roles=STAFF,ADMIN
+export const getAdminAndStaffUsers = async (token) => {
+  const headers = { 'Content-Type': 'application/json' };
+  if (token) { headers['Authorization'] = `Bearer ${token}`; }
+  // The roles query parameter should be handled as per backend expectation.
+  // Usually, it's roles=STAFF,ADMIN or roles=STAFF&roles=ADMIN.
+  // Let's assume comma-separated for now.
+  const response = await fetch(`${API_BASE_URL}/users?roles=STAFF,ADMIN`, {
+    method: 'GET',
+    headers: headers,
+  });
+  return handleResponse(response);
+};
+
+// POST /api/users - Admin creates user with temporary password
+export const createUserByAdmin = async (userData, token) => {
+  // userData: { username, email, phoneNumber, password, role (name or ID) }
+  const headers = { 'Content-Type': 'application/json' };
+  if (token) { headers['Authorization'] = `Bearer ${token}`; }
+  const response = await fetch(`${API_BASE_URL}/users`, {
+    method: 'POST',
+    headers: headers,
+    body: JSON.stringify(userData),
+  });
+  return handleResponse(response);
+};
+
+// PATCH /api/users/{id} - Admin updates user (username, phoneNumber, role)
+export const updateUserByAdmin = async (userId, userData, token) => {
+  // userData: { username (optional), phoneNumber (optional), role (name or ID, optional) }
+  const headers = { 'Content-Type': 'application/json' };
+  if (token) { headers['Authorization'] = `Bearer ${token}`; }
+  const response = await fetch(`${API_BASE_URL}/users/${userId}`, {
+    method: 'PATCH',
+    headers: headers,
+    body: JSON.stringify(userData),
+  });
+  return handleResponse(response);
+};
+
+export const deleteUserById = async (userId, token) => { // Renamed from deleteUser for clarity
+  const headers = {};
+  if (token) { headers['Authorization'] = `Bearer ${token}`; }
+  const response = await fetch(`${API_BASE_URL}/users/${userId}`, {
+    method: 'DELETE',
+    headers: headers,
+  });
+  return handleResponse(response);
+};
+
+// GET /api/roles
+export const getAllRoles = async (token) => {
+    const headers = { 'Content-Type': 'application/json' };
+    if (token) { headers['Authorization'] = `Bearer ${token}`; }
+    const response = await fetch(`${API_BASE_URL}/roles`, {
+        method: 'GET',
+        headers: headers,
+    });
+    return handleResponse(response);
+};
+
+export const registerClientUser = async (userData) => {
+  // userData: { username, email, phoneNumber, password, role: "CLIENT" }
+  const headers = { 'Content-Type': 'application/json' };
+  // No token needed for public registration
+  const response = await fetch(`${API_BASE_URL}/users`, {
+    method: 'POST',
+    headers: headers,
+    body: JSON.stringify(userData),
+  });
+  return handleResponse(response); // Or specific handling for registration success/failure
+};
+
+// GET /api/users?role=TESTER
+export const getTestUsers = async (token) => {
+  const headers = { 'Content-Type': 'application/json' };
+  if (token) { headers['Authorization'] = `Bearer ${token}`; }
+  const response = await fetch(`${API_BASE_URL}/users?role=TESTER`, { // Using your specified endpoint
+    method: 'GET',
+    headers: headers,
+  });
+  return handleResponse(response);
+};

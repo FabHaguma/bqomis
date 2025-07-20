@@ -2,7 +2,10 @@ package com.bqomis.controller;
 
 import com.bqomis.dto.BranchDTO;
 import com.bqomis.model.Branch;
+import com.bqomis.model.BranchConfigurationOverrides;
 import com.bqomis.service.BranchService;
+import com.bqomis.util.AppSettingsUtil;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,6 +19,8 @@ public class BranchController {
 
     @Autowired
     private BranchService branchService;
+    @Autowired
+    private AppSettingsUtil appSettingsUtil;
 
     @GetMapping
     public ResponseEntity<List<BranchDTO>> getAllBranches() {
@@ -47,4 +52,23 @@ public class BranchController {
     public void deleteBranch(@PathVariable Long id) {
         branchService.deleteById(id);
     }
+
+    @GetMapping("/{branchId}/settings")
+    public ResponseEntity<BranchConfigurationOverrides> getBranchSettings(@PathVariable Long branchId) {
+        BranchConfigurationOverrides settings = appSettingsUtil.getBranchConfigOverrideByBranchId(branchId);
+        if (settings == null) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(settings);
+    }
+
+    @PutMapping("/{branchId}/settings")
+    public ResponseEntity<BranchConfigurationOverrides> updateBranchSettings(
+            @PathVariable Long branchId,
+            @RequestBody BranchConfigurationOverrides overrides) {
+        overrides.setBranchId(branchId);
+        BranchConfigurationOverrides saved = appSettingsUtil.saveOrUpdateBranchConfigOverride(overrides);
+        return ResponseEntity.ok(saved);
+    }
+
 }

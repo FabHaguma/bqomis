@@ -1,4 +1,6 @@
 @use '../../assets/styles/variables.scss' as styleVar;
+@use "sass:color";
+@use "sass:math";
 
 .confirmation-dialog {
   .confirmation-message {

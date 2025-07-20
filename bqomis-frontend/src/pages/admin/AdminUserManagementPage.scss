@@ -1,0 +1,79 @@
+@use "sass:color";
+@use "sass:math";
+@use '../../assets/styles/variables.scss' as styleVar;
+
+.admin-user-management-page {
+  padding: styleVar.$spacing-lg;
+
+  .page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: styleVar.$spacing-lg;
+
+    h1 {
+      margin: 0;
+      font-size: 2em;
+      color: styleVar.$neutral-darkest;
+    }
+  }
+  
+  .error-message.alert.alert-danger { // Copied from Branch Management for consistency
+    padding: styleVar.$spacing-md;
+    margin-bottom: styleVar.$spacing-lg;
+    border: 1px solid transparent;
+    border-radius: styleVar.$border-radius-sm;
+    color: color.adjust(styleVar.$error-color, $lightness: -10%);
+    background-color: color.adjust(styleVar.$error-color, $lightness: 35%);
+    border-color: color.adjust(styleVar.$error-color, $lightness: 25%);
+  }
+
+  .users-table-container { // Adapted from .branches-table-container
+    background-color: styleVar.$bg-secondary;
+    padding: styleVar.$spacing-md;
+    border-radius: styleVar.$border-radius-md;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    overflow-x: auto;
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+
+      th, td {
+        padding: styleVar.$spacing-sm styleVar.$spacing-md;
+        text-align: left;
+        border-bottom: 1px solid styleVar.$border-color;
+      }
+
+      th {
+        background-color: color.adjust(styleVar.$bg-secondary, $lightness: 5%);
+        font-weight: bold;
+        color: styleVar.$text-primary;
+      }
+
+      td {
+        color: styleVar.$text-secondary;
+      }
+
+      tbody tr:hover {
+        background-color: color.adjust(styleVar.$bg-secondary, $lightness: 3%);
+      }
+
+      td:last-child { // Actions column
+        .btn {
+          margin-right: styleVar.$spacing-sm;
+          &:last-child {
+            margin-right: 0;
+          }
+        }
+      }
+    }
+  }
+  
+  .loading-message {
+    font-size: 1.2em;
+    text-align: center;
+    padding: styleVar.$spacing-xl;
+  }
+
+}

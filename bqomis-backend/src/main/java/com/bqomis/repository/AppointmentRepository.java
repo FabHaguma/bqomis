@@ -30,4 +30,32 @@ public interface AppointmentRepository extends JpaRepository<Appointment, Long> 
         @Query("SELECT a FROM Appointment a WHERE a.userId = :userId")
         List<Appointment> findAppointmentsByUserId(@Param("userId") Long userId);
 
+        @Query("SELECT a FROM Appointment a WHERE a.date BETWEEN :startDate AND :endDate")
+        List<Appointment> findAppointmentsByPeriod(@Param("startDate") LocalDate startDate,
+                        @Param("endDate") LocalDate endDate);
+
+        @Query("SELECT a FROM Appointment a WHERE a.date BETWEEN :startDate AND :endDate AND a.branchServiceId IN :branchServiceIds")
+        List<Appointment> findAppointmentsByPeriodAndBranchServiceIds(@Param("startDate") LocalDate startDate,
+                        @Param("endDate") LocalDate endDate, @Param("branchServiceIds") List<Long> branchServiceIds);
+
+        @Query("SELECT a FROM Appointment a WHERE a.date <= :beforeOrEqualDate")
+        List<Appointment> findAppointmentsBeforeOrEqualDate(@Param("beforeOrEqualDate") LocalDate beforeOrEqualDate);
+
+        @Query("SELECT a FROM Appointment a WHERE a.date >= :afterOrEqualDate")
+        List<Appointment> findAppointmentsAfterOrEqualDate(@Param("afterOrEqualDate") LocalDate afterOrEqualDate);
+
+        @Query("SELECT a FROM Appointment a WHERE a.date >= :afterDate AND  a.branchServiceId IN :branchServiceIds")
+        List<Appointment> findAppointmentsByDateAfterAndBranchServiceIds(
+                        @Param("afterDate") LocalDate afterDate,
+                        @Param("branchServiceIds") List<Long> branchServiceIds);
+
+        @Query("SELECT a FROM Appointment a WHERE a.date <= :beforeDate AND  a.branchServiceId IN :branchServiceIds")
+        List<Appointment> findAppointmentsByDateBeforeAndBranchServiceIds(
+                        @Param("beforeDate") LocalDate beforeDate,
+                        @Param("branchServiceIds") List<Long> branchServiceIds);
+
+        @Query("SELECT a FROM Appointment a WHERE a.date >= :startDate AND a.date <= :endDate")
+        List<Appointment> findAppointmentsByDateRange(
+                        @Param("startDate") LocalDate startDate,
+                        @Param("endDate") LocalDate endDate);
 }

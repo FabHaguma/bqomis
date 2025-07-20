@@ -1,5 +1,5 @@
-CREATE DATABASE IF NOT EXISTS bqomis_db;
-USE bqomis_db;
+-- CREATE DATABASE IF NOT EXISTS bqomis_db;
+-- USE bqomis_db;
 
 -- Create table for users
 CREATE TABLE IF NOT EXISTS users (
@@ -22,14 +22,14 @@ CREATE TABLE IF NOT EXISTS roles (
 -- Create table for districts
 CREATE TABLE IF NOT EXISTS districts (
     id SERIAL PRIMARY KEY,
-    name VARCHAR(255) NOT NULL,
+    name VARCHAR(255) NOT NULL UNIQUE,
     province VARCHAR(255) NOT NULL
 );
 
 -- Create table for branches
 CREATE TABLE IF NOT EXISTS branches (
     id SERIAL PRIMARY KEY,
-    name VARCHAR(255) NOT NULL,
+    name VARCHAR(255) NOT NULL UNIQUE,
     address TEXT,
     district VARCHAR(255) NOT NULL,
     province VARCHAR(255)
@@ -38,7 +38,7 @@ CREATE TABLE IF NOT EXISTS branches (
 -- Create table for services
 CREATE TABLE IF NOT EXISTS services (
     id SERIAL PRIMARY KEY,
-    name VARCHAR(255) NOT NULL,
+    name VARCHAR(255) NOT NULL UNIQUE,
     description TEXT
 );
 

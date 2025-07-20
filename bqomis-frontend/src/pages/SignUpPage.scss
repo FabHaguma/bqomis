@@ -1,0 +1,106 @@
+@use "sass:color";
+@use "sass:math";
+@use '../assets/styles/variables.scss' as styleVar;
+
+.signup-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 90vh; // Use most of the viewport height
+  padding: styleVar.$spacing-lg;
+  background-color: styleVar.$bg-primary; // Or a specific background for auth pages
+}
+
+.signup-form-container {
+  background-color: styleVar.$bg-secondary; 
+  padding: styleVar.$spacing-xl;
+  border-radius: styleVar.$border-radius-md;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 450px; // Slightly wider for more fields
+  text-align: center;
+
+  h2 {
+    margin-bottom: styleVar.$spacing-lg;
+    color: styleVar.$text-primary;
+    font-size: 1.6em;
+  }
+}
+
+// Re-use alert/message styles from SignInPage or global styles
+.error-message.alert.alert-danger,
+.success-message.alert.alert-success {
+  padding: styleVar.$spacing-md;
+  margin-bottom: styleVar.$spacing-lg;
+  border: 1px solid transparent;
+  border-radius: styleVar.$border-radius-sm;
+  text-align: left;
+  font-size: 0.9em;
+}
+.error-message.alert.alert-danger {
+  color: color.adjust(styleVar.$error-color, $lightness: -10%);
+  background-color: color.adjust(styleVar.$error-color, $lightness: 35%);
+  border-color: color.adjust(styleVar.$error-color, $lightness: 25%);
+}
+.success-message.alert.alert-success {
+  color: color.adjust(styleVar.$success-color, $lightness: -10%);
+  background-color: color.adjust(styleVar.$success-color, $lightness: 45%);
+  border-color: color.adjust(styleVar.$success-color, $lightness: 25%);
+}
+
+.form-group {
+  margin-bottom: styleVar.$spacing-md * 0.9; // Slightly less margin
+  text-align: left;
+
+  label {
+    display: block;
+    margin-bottom: math.div(styleVar.$spacing-xs, 1.5); // Updated division to math.div
+    font-weight: 500;
+    color: styleVar.$text-secondary;
+  }
+
+  input {
+    width: 100%; // Take full width
+    padding: styleVar.$spacing-sm styleVar.$spacing-md;
+    border: 1px solid styleVar.$border-color;
+    border-radius: styleVar.$border-radius-sm;
+    background-color: styleVar.$bg-tertiary;
+    color: styleVar.$text-primary;
+    font-size: 1rem;
+    box-sizing: border-box; // Important for width: 100% with padding
+
+    &:focus {
+      outline: none;
+      border-color: styleVar.$primary-color;
+      box-shadow: 0 0 0 2px rgba(styleVar.$primary-color, 0.3);
+    }
+    &:disabled {
+        background-color: color.adjust(styleVar.$bg-tertiary, $lightness: 3%);
+        opacity: 0.7;
+    }
+  }
+}
+
+.btn-signup { // Assuming global .btn and .btn-primary styles
+  width: 100%;
+  padding: styleVar.$spacing-md;
+  font-size: 1.1em;
+  margin-top: styleVar.$spacing-sm; // Space above button
+}
+
+.signin-link {
+  margin-top: styleVar.$spacing-lg;
+  font-size: 0.9em;
+  color: styleVar.$text-muted;
+
+  a {
+    color: styleVar.$text-link;
+    text-decoration: none; // Or underline if preferred
+    font-weight: 500;
+
+    &:hover {
+      text-decoration: underline;
+      color: styleVar.$text-link-hover;
+    }
+  }
+}

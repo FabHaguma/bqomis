@@ -1,4 +1,6 @@
 @use '../../assets/styles/variables.scss' as styleVar;
+@use "sass:color";
+@use "sass:math";
 
 .hour-chunk-status-container {
   margin: styleVar.$spacing-md 0;
@@ -16,7 +18,7 @@
   justify-content: space-between; // Distribute chunks evenly
   gap: 2px; // Small gap between chunks
   align-items: flex-end; // Align bars at the bottom
-  background-color: lighten(styleVar.$bg-tertiary, 5%);
+  background-color: color.adjust(styleVar.$bg-tertiary, $lightness: 5%);
   padding: styleVar.$spacing-sm styleVar.$spacing-xs;
   border-radius: styleVar.$border-radius-sm;
 }
@@ -33,7 +35,7 @@
     min-width: 15px; // Minimum width for visibility
     height: 20px; // Default height
     border-radius: 2px; // Slightly rounded bars
-    margin-bottom: styleVar.$spacing-xs / 2;
+    margin-bottom: math.div(styleVar.$spacing-xs, 2);
     transition: background-color 0.3s ease;
 
     &.chunk-green {

@@ -1,0 +1,100 @@
+@use "sass:color";
+@use "sass:math";
+@use '../../assets/styles/variables.scss' as styleVar;
+
+
+.admin-appointment-management-page {
+   padding: styleVar.$spacing-lg;
+
+  .page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: styleVar.$spacing-lg;
+
+    h1 {
+      margin: 0;
+      font-size: 2em;
+      color: styleVar.$neutral-darkest;
+    }
+  }
+  
+  .error-message.alert.alert-danger { // Copied from Branch Management for consistency
+    padding: styleVar.$spacing-md;
+    margin-bottom: styleVar.$spacing-lg;
+    border: 1px solid transparent;
+    border-radius: styleVar.$border-radius-sm;
+    color: color.adjust(styleVar.$error-color, $lightness: -10%);
+    background-color: color.adjust(styleVar.$error-color, $lightness: 35%);
+    border-color: color.adjust(styleVar.$error-color, $lightness: 25%);
+  }
+
+  .filters-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: styleVar.$spacing-md;
+    margin-bottom: styleVar.$spacing-lg;
+    padding: styleVar.$spacing-md;
+    background-color: color.adjust(styleVar.$bg-secondary, $lightness: 3%);
+    border-radius: styleVar.$border-radius-sm;
+
+    input[type="date"], select {
+      padding: styleVar.$spacing-sm (styleVar.$spacing-sm * 1.2);
+      border: 1px solid styleVar.$border-color;
+      border-radius: styleVar.$border-radius-sm;
+      background-color: styleVar.$bg-tertiary;
+      color: styleVar.$text-primary;
+      margin-right: styleVar.$spacing-sm; // Some space before next filter
+      min-width: 150px;
+    }
+    // .btn-sm for apply filter button
+  }
+
+  .appointments-table-container {
+    // ... (standard table container styles from other admin pages) ...
+    background-color: styleVar.$bg-secondary;
+    padding: styleVar.$spacing-md;
+    border-radius: styleVar.$border-radius-md;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    overflow-x: auto; // For responsiveness
+    
+    table {
+      // ... (standard table, th, td styles) ...
+      width: 100%;
+      border-collapse: collapse;
+
+      th, td {
+        padding: styleVar.$spacing-sm styleVar.$spacing-md;
+        text-align: left;
+        border-bottom: 1px solid styleVar.$border-color;
+      }
+
+      th {
+        background-color: color.adjust(styleVar.$bg-secondary, $lightness: 5%);
+        font-weight: bold;
+        color: styleVar.$text-primary;
+      }
+
+      td {
+        color: styleVar.$text-secondary;
+      }
+
+      tbody tr:hover {
+        background-color: color.adjust(styleVar.$bg-secondary, $lightness: 3%);
+      }
+      .status-badge { /* ... (copy from ClientMyAppointmentsPage.scss or make global) ... */ }
+      .btn-xs { // For smaller action buttons in table
+        padding: styleVar.$spacing-xs (styleVar.$spacing-xs * 2);
+        font-size: 0.8em;
+        margin-right: styleVar.$spacing-xs;
+      }
+    }
+  }
+  
+  .appointment-detail-view, .update-status-form {
+      p { margin: styleVar.$spacing-sm 0; strong { color: styleVar.$text-primary; } }
+      .form-group { margin-bottom: styleVar.$spacing-md; label { display: block; margin-bottom: styleVar.$spacing-xs; } select { width: 100%; /* ... */ }}
+      .form-actions { display: flex; justify-content: flex-end; gap: styleVar.$spacing-md; margin-top: styleVar.$spacing-lg; }
+  }
+}
+// Global .btn, .btn-primary, .btn-secondary, .btn-danger, .btn-info, .btn-sm, .btn-xs assumed

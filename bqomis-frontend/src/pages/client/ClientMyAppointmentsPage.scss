@@ -1,3 +1,5 @@
+@use "sass:color";
+@use "sass:math";
 @use '../../assets/styles/variables.scss' as styleVar;
 @use '../../assets/styles/buttonStyles.scss';
 
@@ -67,7 +69,7 @@
       }
 
       p {
-        margin: styleVar.$spacing-xs * 1.5 0;
+        margin: math.div(styleVar.$spacing-xs, 2) 0;
         color: styleVar.$text-secondary;
         font-size: 0.95em;
         strong {
