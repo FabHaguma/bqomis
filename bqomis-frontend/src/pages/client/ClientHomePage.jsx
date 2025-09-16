@@ -98,11 +98,11 @@ const ClientHomePage = () => {
             <h3>My Appointments</h3>
             <p>View and manage your scheduled appointments.</p>
           </Link>
-          <Link to="/client/profile" className="action-card">
+          {/* <Link to="/client/profile" className="action-card">
             <span className="action-icon">👤</span>
             <h3>My Profile</h3>
             <p>Update your personal information and settings.</p>
-          </Link>
+          </Link> */}
         </div>
       </section>
     </div>

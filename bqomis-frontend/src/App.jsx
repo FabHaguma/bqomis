@@ -4,6 +4,14 @@ import AdminLayout from './components/layout/AdminLayout';
 import ClientLayout from './components/layout/ClientLayout';
 import { useAuth } from './contexts/AuthContext'; // Import useAuth
 
+// Import client pages
+import ClientHomePage from './pages/client/ClientHomePage';
+import ClientFindBranchPage from './pages/client/ClientFindBranchPage';
+import ClientBookAppointmentPage from './pages/client/ClientBookAppointmentPage';
+import ClientMyAppointmentsPage from './pages/client/ClientMyAppointmentsPage';
+import ClientProfilePage from './pages/client/ClientProfilePage';
+
+// Import admin pages
 import AdminDashboardPage from './pages/admin/AdminDashboardPage'; // Assuming you created this
 import AdminBranchManagementPage from './pages/admin/AdminBranchManagementPage';
 import AdminServiceManagementPage from './pages/admin/AdminServiceManagementPage';
@@ -13,12 +21,6 @@ import AdminAppointmentManagementPage from './pages/admin/AdminAppointmentManage
 import AdminSettingsPage from './pages/admin/AdminSettingsPage';
 import DevDataToolsPage from './pages/admin/DevDataToolsPage';
 
-
-import ClientHomePage from './pages/client/ClientHomePage';
-import ClientFindBranchPage from './pages/client/ClientFindBranchPage';
-import ClientBookAppointmentPage from './pages/client/ClientBookAppointmentPage';
-import ClientMyAppointmentsPage from './pages/client/ClientMyAppointmentsPage';
-import ClientProfilePage from './pages/client/ClientProfilePage';
 
 // pages shared between client and admin
 import SignInPage from './pages/SignInPage';

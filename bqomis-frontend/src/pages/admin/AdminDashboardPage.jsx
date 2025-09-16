@@ -195,6 +195,33 @@ const AdminDashboardPage = () => {
           ) : (<p>No data for overall peak times.</p>)}
         </div>
 
+        {/* Peak Times by District */}
+        <div className="chart-card">
+            <h3>Peak Times by District</h3>
+             <select value={selectedDistrictForAnalytics} onChange={(e) => {setSelectedDistrictForAnalytics(e.target.value); /* Fetch data or rely on global fetch */ }}>
+                <option value="">Select District</option>
+                {districts.map(d => <option key={d.id} value={d.name}>{d.name}</option>)}
+            </select>
+            {selectedDistrictForAnalytics && (
+                <select value={peakTimeDistrictGroupBy} onChange={(e) => setPeakTimeDistrictGroupBy(e.target.value)}>
+                    <option value="hour">By Hour</option>
+                    <option value="dayOfWeek">By Day of Week</option>
+                </select>
+            )}
+            {selectedDistrictForAnalytics && peakTimesDistrictData.length > 0 ? (
+                <ResponsiveContainer width="100%" height={300}>
+                    <LineChart data={peakTimesDistrictData}>
+                        <CartesianGrid strokeDasharray="3 3" />
+                        <XAxis dataKey="name" />
+                        <YAxis allowDecimals={false} />
+                        <Tooltip />
+                        <Legend />
+                        <Line type="monotone" dataKey="Appointments" stroke="#82Ca9D" />
+                    </LineChart>
+                </ResponsiveContainer>
+            ) : (selectedDistrictForAnalytics && !isLoading && <p>No peak time data for selected district.</p>)}
+        </div>
+
         {/* Branch Specific Analytics */}
         <div className="chart-card">
             <h3>Branch Performance</h3>
@@ -264,33 +291,6 @@ const AdminDashboardPage = () => {
                 </>
             )}
              {selectedDistrictForAnalytics && selectedServiceIdForAnalytics && !serviceAnalytics && !isLoading && <p>No data for selected service/district.</p>}
-        </div>
-
-        {/* Peak Times by District */}
-        <div className="chart-card">
-            <h3>Peak Times by District</h3>
-             <select value={selectedDistrictForAnalytics} onChange={(e) => {setSelectedDistrictForAnalytics(e.target.value); /* Fetch data or rely on global fetch */ }}>
-                <option value="">Select District</option>
-                {districts.map(d => <option key={d.id} value={d.name}>{d.name}</option>)}
-            </select>
-            {selectedDistrictForAnalytics && (
-                <select value={peakTimeDistrictGroupBy} onChange={(e) => setPeakTimeDistrictGroupBy(e.target.value)}>
-                    <option value="hour">By Hour</option>
-                    <option value="dayOfWeek">By Day of Week</option>
-                </select>
-            )}
-            {selectedDistrictForAnalytics && peakTimesDistrictData.length > 0 ? (
-                <ResponsiveContainer width="100%" height={300}>
-                    <LineChart data={peakTimesDistrictData}>
-                        <CartesianGrid strokeDasharray="3 3" />
-                        <XAxis dataKey="name" />
-                        <YAxis allowDecimals={false} />
-                        <Tooltip />
-                        <Legend />
-                        <Line type="monotone" dataKey="Appointments" stroke="#82Ca9D" />
-                    </LineChart>
-                </ResponsiveContainer>
-            ) : (selectedDistrictForAnalytics && !isLoading && <p>No peak time data for selected district.</p>)}
         </div>
 
       </div>
