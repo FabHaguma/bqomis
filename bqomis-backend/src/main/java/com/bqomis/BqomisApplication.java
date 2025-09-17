@@ -14,7 +14,7 @@ public class BqomisApplication {
 		// Additionally, only attempt to load when running without an explicitly
 		// provided Spring profile or when profile looks like a dev environment.
 		String activeProfile = System.getenv("SPRING_PROFILES_ACTIVE");
-		boolean isDevLike = activeProfile == null || activeProfile.contains("dev") || activeProfile.contains("local");
+				boolean isDevLike = activeProfile == null || activeProfile.contains("dev") || activeProfile.contains("local");
 		if (isDevLike) {
 			Dotenv dotenv = Dotenv.configure()
 				.ignoreIfMissing()
